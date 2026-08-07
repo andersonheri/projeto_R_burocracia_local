@@ -36,7 +36,7 @@ projeto_R_burocracia_local/
 ├── codebooks/
 │   ├── codebook_burocracia_local.docx          # codebook original (variaveis/categorias do artigo)
 │   └── *.yaml                                  # codebooks acR salvos (ac_qual_save_codebook)
-└── output/                                     # relatorio_metodo_*.html (gerados por 03), figuras/ (geradas por 04)
+└── output/                                     # relatorio_metodo_*.html (gerado por 03)
 ```
 
 ## Banco final já codificado
@@ -113,8 +113,8 @@ Sys.getenv("GEMINI_API_KEY") != ""
 5. **`04_analise_descritiva.R`**: script único de análise do banco final,
    lê diretamente `data/banco_final_114_burocracia_local.xlsx` (o banco já
    codificado manualmente) e produz frequências, completude, tendência
-   temporal e perfil bibliométrico. Saída no console e gráficos em
-   `output/figuras/`.
+   temporal, perfil bibliométrico e tabelas cruzadas descritivas. Saída
+   apenas no console (não gera gráficos nem arquivos).
 
 ## Variáveis do codebook
 

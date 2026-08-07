@@ -14,9 +14,8 @@
 #   4. Tendencia temporal (evolucao das correntes teoricas e metodos por ano)
 #   5. Tabelas cruzadas descritivas entre variaveis-chave do codebook
 #
-# SAIDA: tabelas no console (como antes) + um grafico ggplot2 para cada
-# tabela, salvo como .png em output/figuras/ (ver Secao "Graficos" logo
-# abaixo dos pacotes). Nenhum outro arquivo e' exportado por este script.
+# SAIDA: apenas tabelas no console. Nenhum arquivo e' exportado por este
+# script.
 # =============================================================================
 
 library(dplyr)
@@ -26,7 +25,6 @@ library(openxlsx)
 library(scales)
 library(stringr)
 library(rlang)     # necessario para !!rlang::sym(v) dentro de tabyl()
-library(ggplot2)   # os graficos deste script
 
 # imprimir_tudo(): imprime uma tabela (data.frame ou tibble) por completo,
 # sem truncar linhas. Usamos isso em vez de print(x, n = Inf) porque
@@ -39,35 +37,6 @@ library(ggplot2)   # os graficos deste script
 # por isso e' a forma mais segura de garantir que nada fica escondido.
 imprimir_tudo <- function(x) {
   print(as.data.frame(x))
-}
-
-# -----------------------------------------------------------------------------
-# Graficos -- configuracao usada em TODOS os graficos deste script
-# -----------------------------------------------------------------------------
-# tema_grafico: define o "visual padrao" (fundo, grade, e o tamanho da
-# letra) de todo grafico feito neste script. base_size = 14 deixa titulo,
-# eixos e rotulos maiores -- mais legivel quando o grafico for reduzido
-# dentro do artigo ou de uma apresentacao. Definido uma unica vez aqui e
-# reaproveitado em cada grafico com `+ tema_grafico`.
-tema_grafico <- theme_minimal(base_size = 14)
-
-# Pasta onde todo grafico deste script e' salvo (criada uma unica vez, no
-# inicio -- se ja existir, showWarnings = FALSE so' evita um aviso).
-dir.create("output/figuras", showWarnings = FALSE, recursive = TRUE)
-
-# salvar_grafico(): salva um grafico ggplot como .png dentro de
-# output/figuras/, sempre com o mesmo tamanho e a mesma resolucao. Vira
-# funcao porque e' chamada uma vez PARA CADA grafico do script (sao mais de
-# 20 no total) -- assim nao repetimos os mesmos 4 argumentos do ggsave()
-# em cada um deles.
-salvar_grafico <- function(grafico, nome_arquivo, largura = 8, altura = 5) {
-  ggsave(
-    filename = file.path("output/figuras", nome_arquivo),
-    plot     = grafico,
-    width    = largura,
-    height   = altura,
-    dpi      = 300
-  )
 }
 
 # -----------------------------------------------------------------------------
@@ -116,37 +85,12 @@ producao_ano <- base %>%
   arrange(year)
 imprimir_tudo(producao_ano)
 
-# Grafico de LINHA: e' uma serie temporal (um ano no eixo X), entao linha
-# comunica evolucao melhor do que barras. Sem titulo interno -- a legenda
-# de cada grafico fica no texto do relatorio, nao dentro da imagem.
-grafico_producao_ano <- ggplot(producao_ano, aes(x = year, y = n_artigos)) +
-  geom_line(color = "#1B4F72", linewidth = 1.1) +
-  geom_point(color = "#1B4F72", size = 2.2) +
-  scale_x_continuous(breaks = scales::breaks_width(2)) +
-  labs(x = "Ano", y = "Nº de artigos") +
-  tema_grafico
-print(grafico_producao_ano)
-salvar_grafico(grafico_producao_ano, "01_producao_por_ano.png")
-
 cat("\n-- Top 15 periodicos --\n")
 top_periodicos <- base %>%
   count(journal, name = "n_artigos", sort = TRUE) %>%
   mutate(pct = percent(n_artigos / sum(n_artigos), accuracy = 0.1)) %>%
   slice_head(n = 15)
 imprimir_tudo(top_periodicos)
-
-# Grafico de barras horizontais (coord_flip): nomes de periodico ficam
-# longos demais para caber no eixo X na horizontal.
-grafico_periodicos <- top_periodicos %>%
-  ggplot(aes(x = reorder(journal, n_artigos), y = n_artigos)) +
-  geom_col(fill = "#1B4F72") +
-  geom_text(aes(label = n_artigos), hjust = -0.3, size = 4.5) +
-  coord_flip() +
-  scale_y_continuous(expand = expansion(mult = c(0, 0.15))) +
-  labs(x = NULL, y = "Nº de artigos") +
-  tema_grafico
-print(grafico_periodicos)
-salvar_grafico(grafico_periodicos, "02_top_periodicos.png", altura = 6)
 
 cat("\n-- Cobertura de metadados --\n")
 cobertura <- base %>%
@@ -180,23 +124,6 @@ cat("\n", strrep("-", 78), "\n", sep = "")
 cat("3. FREQUENCIAS POR VARIAVEL DO CODEBOOK\n")
 cat(strrep("-", 78), "\n")
 
-# grafico_barras_variavel(): conta as categorias de UMA variavel e devolve
-# um grafico de barras horizontais, ordenado da categoria mais para a
-# menos frequente. Vira funcao porque e' chamada uma vez PARA CADA uma das
-# 13 variaveis de rotulo unico, dentro do `for` logo abaixo.
-grafico_barras_variavel <- function(base, variavel) {
-  base %>%
-    filter(!is.na(.data[[variavel]]), .data[[variavel]] != "") %>%
-    count(.data[[variavel]], name = "n_artigos") %>%
-    ggplot(aes(x = reorder(.data[[variavel]], n_artigos), y = n_artigos)) +
-    geom_col(fill = "#1B4F72") +
-    geom_text(aes(label = n_artigos), hjust = -0.3, size = 4.5) +
-    coord_flip() +
-    scale_y_continuous(expand = expansion(mult = c(0, 0.15))) +
-    labs(x = NULL, y = "Nº de artigos") +
-    tema_grafico
-}
-
 for (v in variaveis_categoricas_single) {
   if (!v %in% names(base)) next
   cat("\n-- ", v, " --\n", sep = "")
@@ -204,10 +131,6 @@ for (v in variaveis_categoricas_single) {
     tabyl(!!rlang::sym(v)) %>%
     adorn_pct_formatting(digits = 1)
   print(tab)
-
-  grafico_v <- grafico_barras_variavel(base, v)
-  print(grafico_v)
-  salvar_grafico(grafico_v, paste0("03_freq_", v, ".png"))
 }
 
 # dimensao_teorica: multilabel ("Tecnica | Politica") -- conta cada rotulo
@@ -223,17 +146,6 @@ if (variavel_multilabel %in% names(base)) {
     count(rotulo, name = "n_artigos", sort = TRUE) %>%
     mutate(pct_dos_artigos = percent(n_artigos / nrow(base), accuracy = 0.1))
   imprimir_tudo(freq_multilabel)
-
-  grafico_multilabel <- freq_multilabel %>%
-    ggplot(aes(x = reorder(rotulo, n_artigos), y = n_artigos)) +
-    geom_col(fill = "#1B4F72") +
-    geom_text(aes(label = n_artigos), hjust = -0.3, size = 4.5) +
-    coord_flip() +
-    scale_y_continuous(expand = expansion(mult = c(0, 0.15))) +
-    labs(x = NULL, y = "Nº de artigos") +
-    tema_grafico
-  print(grafico_multilabel)
-  salvar_grafico(grafico_multilabel, "03_freq_dimensao_teorica_multilabel.png")
 }
 
 # -----------------------------------------------------------------------------
@@ -251,29 +163,6 @@ metodo_ano <- base %>%
   arrange(year)
 imprimir_tudo(metodo_ano)
 
-# O grafico usa `count(year, metodo)` no formato LONGO (uma linha por
-# combinacao ano/metodo) -- e' o formato que o ggplot2 espera. A tabela
-# impressa acima (metodo_ano), no formato LARGO (uma coluna por metodo), e'
-# melhor para leitura em tabela, mas nao e' o formato que o ggplot usa.
-#
-# Grafico de LINHA (uma linha por metodo) em vez de barras empilhadas: e'
-# uma serie temporal, e barras empilhadas dificultam ver a tendencia de
-# cada metodo isoladamente. scale_color_brewer(palette = "Blues") da' uma
-# cor diferente para cada metodo, todas dentro da mesma gama de azul.
-grafico_metodo_ano <- base %>%
-  filter(!is.na(metodo)) %>%
-  count(year, metodo) %>%
-  ggplot(aes(x = year, y = n, color = metodo)) +
-  geom_line(linewidth = 1) +
-  geom_point(size = 2) +
-  scale_x_continuous(breaks = scales::breaks_width(2)) +
-  scale_color_brewer(palette = "Blues") +
-  labs(x = "Ano", y = "Nº de artigos", color = "Método") +
-  tema_grafico +
-  theme(legend.position = "bottom")
-print(grafico_metodo_ano)
-salvar_grafico(grafico_metodo_ano, "04_metodo_por_ano.png", largura = 9)
-
 if (variavel_multilabel %in% names(base)) {
   cat("\n-- Dimensao teorica mobilizada por ano (contagem; multilabel) --\n")
   teoria_ano <- base %>%
@@ -285,27 +174,6 @@ if (variavel_multilabel %in% names(base)) {
     pivot_wider(names_from = rotulo, values_from = n, values_fill = 0) %>%
     arrange(year)
   imprimir_tudo(teoria_ano)
-
-  # Aqui um grafico de LINHAS (uma linha por dimensao teorica) faz mais
-  # sentido do que barras empilhadas -- como e' multilabel, um mesmo artigo
-  # conta para mais de uma linha ao mesmo tempo, e barras empilhadas dariam
-  # a impressao errada de que as categorias sao mutuamente exclusivas.
-  grafico_teoria_ano <- base %>%
-    filter(!is.na(.data[[variavel_multilabel]]), .data[[variavel_multilabel]] != "") %>%
-    mutate(rotulo = str_split(.data[[variavel_multilabel]], "\\s*\\|\\s*")) %>%
-    tidyr::unnest(rotulo) %>%
-    mutate(rotulo = str_squish(rotulo)) %>%
-    count(year, rotulo) %>%
-    ggplot(aes(x = year, y = n, color = rotulo)) +
-    geom_line(linewidth = 1) +
-    geom_point(size = 2) +
-    scale_x_continuous(breaks = scales::breaks_width(2)) +
-    scale_color_brewer(palette = "Blues") +
-    labs(x = "Ano", y = "Nº de artigos", color = "Dimensão teórica") +
-    tema_grafico +
-    theme(legend.position = "bottom")
-  print(grafico_teoria_ano)
-  salvar_grafico(grafico_teoria_ano, "04_dimensao_teorica_por_ano.png", largura = 9)
 }
 
 # -----------------------------------------------------------------------------
@@ -314,27 +182,6 @@ if (variavel_multilabel %in% names(base)) {
 cat("\n", strrep("-", 78), "\n", sep = "")
 cat("5. TABELAS CRUZADAS DESCRITIVAS\n")
 cat(strrep("-", 78), "\n")
-
-# grafico_cruzamento(): cruza duas variaveis categoricas e devolve um
-# "mapa de calor" (geom_tile) -- cor = % de artigos daquela linha que caiu
-# naquela coluna; numero dentro do quadrado = contagem bruta de artigos.
-# Vira funcao porque e' chamada uma vez PARA CADA um dos 6 pares de
-# variaveis cruzadas, dentro do `for` logo abaixo.
-grafico_cruzamento <- function(base, v1, v2) {
-  base %>%
-    filter(!is.na(.data[[v1]]), !is.na(.data[[v2]])) %>%
-    count(.data[[v1]], .data[[v2]], name = "n_artigos") %>%
-    group_by(.data[[v1]]) %>%
-    mutate(pct_na_linha = n_artigos / sum(n_artigos)) %>%
-    ungroup() %>%
-    ggplot(aes(x = .data[[v2]], y = .data[[v1]], fill = pct_na_linha)) +
-    geom_tile(color = "white") +
-    geom_text(aes(label = n_artigos), size = 4.5) +
-    scale_fill_gradient(low = "#EAF2F8", high = "#1B4F72", labels = percent, name = "% na linha") +
-    labs(x = NULL, y = NULL) +
-    tema_grafico +
-    theme(axis.text.x = element_text(angle = 30, hjust = 1), legend.position = "right")
-}
 
 cruzamentos <- list(
   c("metodo", "nivel_hierarquico_burocracia"),
@@ -357,10 +204,6 @@ for (par in cruzamentos) {
     adorn_pct_formatting(digits = 1) %>%
     adorn_ns()
   print(tab)
-
-  grafico_cz <- grafico_cruzamento(base, v1, v2)
-  print(grafico_cz)
-  salvar_grafico(grafico_cz, paste0("05_cruzamento_", v1, "_x_", v2, ".png"), largura = 9, altura = 6)
 }
 
 # dimensao_teorica (multilabel) x valoracao -- expande um registro por rotulo
@@ -381,24 +224,8 @@ if (variavel_multilabel %in% names(base) && "valoracao" %in% names(base)) {
     adorn_pct_formatting(digits = 1) %>%
     adorn_ns()
   print(tab_dim)
-
-  grafico_dim_valoracao <- tab_dim_base %>%
-    count(rotulo, valoracao, name = "n_artigos") %>%
-    group_by(rotulo) %>%
-    mutate(pct_na_linha = n_artigos / sum(n_artigos)) %>%
-    ungroup() %>%
-    ggplot(aes(x = valoracao, y = rotulo, fill = pct_na_linha)) +
-    geom_tile(color = "white") +
-    geom_text(aes(label = n_artigos), size = 4.5) +
-    scale_fill_gradient(low = "#EAF2F8", high = "#1B4F72", labels = percent, name = "% na linha") +
-    labs(x = NULL, y = NULL) +
-    tema_grafico +
-    theme(axis.text.x = element_text(angle = 30, hjust = 1), legend.position = "right")
-  print(grafico_dim_valoracao)
-  salvar_grafico(grafico_dim_valoracao, "05_cruzamento_dimensao_teorica_x_valoracao.png", largura = 9, altura = 5)
 }
 
 cat("\n", strrep("=", 78), "\n", sep = "")
 cat("FIM DA ANALISE\n")
-cat("Graficos salvos em: output/figuras/\n")
 cat(strrep("=", 78), "\n")
