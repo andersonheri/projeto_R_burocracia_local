@@ -125,24 +125,32 @@ classificação/validação automática em `01`-`03`, onde aparece com o sufixo
 `_llm`). Onde os nomes divergem, o crosswalk explícito em
 `00b_crosswalk_categorias.R` faz a tradução.
 
-| Variável (banco final)          | Slug no codebook `acR` (01/02/03)  | Codificada via LLM? |
+A coluna "Fonte no banco final" mostra de onde vem, de fato, o valor usado
+nas análises: `03_validacao_humana.R` decide isso variável por variável,
+usando a classificação do LLM sempre que o Alpha de Krippendorff daquela
+variável for maior ou igual a 0,70 (`LIMIAR_ALPHA_LLM`), e a codificação
+manual (gold standard) caso contrário. `dimensao_teorica`, por ser
+multilabel, não tem alfa categórico comparável e por isso usa sempre a
+codificação humana. Os valores abaixo refletem a última rodada do pipeline,
+salva em `data/banco_final_analise_burocracia_local.xlsx`.
+
+| Variável (banco final)          | Slug no codebook `acR` (01/02/03)  | Fonte no banco final |
 |-----------------------------------|--------------------------------------|------------------------|
-| `nivel_governo`                  | (não aplicável)                       | não (definida na triagem manual) |
-| `nivel_hierarquico_burocracia`   | (não aplicável)                       | não |
-| `metodo`                         | (não aplicável)                       | não |
-| `papel_burocracia`               | (não aplicável)                       | não |
-| `justificativa_codificacao`      | (não aplicável)                       | não |
-| `setor_politica_publica`         | `setor_politica`                      | sim |
-| `dimensao_teorica` (multilabel)  | `dimensao_teorica`                    | sim |
-| `relacao_politica_burocracia`    | `relacao_politica_burocracia`         | sim |
-| `explicacao_arranjo`             | `explicacao_arranjo`                  | sim |
-| `tipo_efeito`                    | `consequencia_arranjo`                | sim |
-| `valoracao`                      | `valoracao_burocracia`                | sim |
-| `enquadramento_normativo`        | `enquadramento_normativo`             | sim |
-| `grau_agencia`                   | `grau_agencia`                        | sim |
-| `referencia_federal`             | `referencia_federal`                  | sim |
-| `escopo_empirico`                | `escopo_empirico`                     | sim |
-| `year`                            | (não aplicável)                       | não (metadado bibliográfico) |
+| `nivel_governo`                  | (não aplicável)                       | Humano (definida na triagem manual) |
+| `nivel_hierarquico_burocracia`   | (não aplicável)                       | Humano |
+| `metodo`                         | (não aplicável)                       | Humano |
+| `papel_burocracia`               | (não aplicável)                       | Humano |
+| `setor_politica_publica`         | `setor_politica`                      | LLM |
+| `dimensao_teorica` (multilabel)  | `dimensao_teorica`                    | Humano (multilabel, sem alfa comparável) |
+| `relacao_politica_burocracia`    | `relacao_politica_burocracia`         | Humano |
+| `explicacao_arranjo`             | `explicacao_arranjo`                  | Humano |
+| `tipo_efeito`                    | `consequencia_arranjo`                | Humano |
+| `valoracao`                      | `valoracao_burocracia`                | Humano |
+| `enquadramento_normativo`        | `enquadramento_normativo`             | Humano |
+| `grau_agencia`                   | `grau_agencia`                        | Humano |
+| `referencia_federal`             | `referencia_federal`                  | LLM |
+| `escopo_empirico`                | `escopo_empirico`                     | LLM |
+| `year`                            | (não aplicável)                       | Humano (metadado bibliográfico) |
 
 **Notas importantes sobre o crosswalk:**
 

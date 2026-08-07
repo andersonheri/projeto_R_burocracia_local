@@ -373,6 +373,15 @@ temporal e perfil bibliométrico. Saída no console e gráficos em
 automática em <code>01</code>-<code>03</code>, onde aparece com o sufixo
 <code>_llm</code>). Onde os nomes divergem, o crosswalk explícito em
 <code>00b_crosswalk_categorias.R</code> faz a tradução.</p>
+<p>A coluna “Fonte no banco final” mostra de onde vem, de fato, o valor
+usado nas análises: <code>03_validacao_humana.R</code> decide isso
+variável por variável, usando a classificação do LLM sempre que o Alpha
+de Krippendorff daquela variável for maior ou igual a 0,70
+(<code>LIMIAR_ALPHA_LLM</code>), e a codificação manual (gold standard)
+caso contrário. <code>dimensao_teorica</code>, por ser multilabel, não
+tem alfa categórico comparável e por isso usa sempre a codificação
+humana. Os valores abaixo refletem a última rodada do pipeline, salva em
+<code>data/banco_final_analise_burocracia_local.xlsx</code>.</p>
 <table>
 <colgroup>
 <col style="width: 36%" />
@@ -383,89 +392,84 @@ automática em <code>01</code>-<code>03</code>, onde aparece com o sufixo
 <tr>
 <th>Variável (banco final)</th>
 <th>Slug no codebook <code>acR</code> (01/02/03)</th>
-<th>Codificada via LLM?</th>
+<th>Fonte no banco final</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><code>nivel_governo</code></td>
 <td>(não aplicável)</td>
-<td>não (definida na triagem manual)</td>
+<td>Humano (definida na triagem manual)</td>
 </tr>
 <tr>
 <td><code>nivel_hierarquico_burocracia</code></td>
 <td>(não aplicável)</td>
-<td>não</td>
+<td>Humano</td>
 </tr>
 <tr>
 <td><code>metodo</code></td>
 <td>(não aplicável)</td>
-<td>não</td>
+<td>Humano</td>
 </tr>
 <tr>
 <td><code>papel_burocracia</code></td>
 <td>(não aplicável)</td>
-<td>não</td>
-</tr>
-<tr>
-<td><code>justificativa_codificacao</code></td>
-<td>(não aplicável)</td>
-<td>não</td>
+<td>Humano</td>
 </tr>
 <tr>
 <td><code>setor_politica_publica</code></td>
 <td><code>setor_politica</code></td>
-<td>sim</td>
+<td>LLM</td>
 </tr>
 <tr>
 <td><code>dimensao_teorica</code> (multilabel)</td>
 <td><code>dimensao_teorica</code></td>
-<td>sim</td>
+<td>Humano (multilabel, sem alfa comparável)</td>
 </tr>
 <tr>
 <td><code>relacao_politica_burocracia</code></td>
 <td><code>relacao_politica_burocracia</code></td>
-<td>sim</td>
+<td>Humano</td>
 </tr>
 <tr>
 <td><code>explicacao_arranjo</code></td>
 <td><code>explicacao_arranjo</code></td>
-<td>sim</td>
+<td>Humano</td>
 </tr>
 <tr>
 <td><code>tipo_efeito</code></td>
 <td><code>consequencia_arranjo</code></td>
-<td>sim</td>
+<td>Humano</td>
 </tr>
 <tr>
 <td><code>valoracao</code></td>
 <td><code>valoracao_burocracia</code></td>
-<td>sim</td>
+<td>Humano</td>
 </tr>
 <tr>
 <td><code>enquadramento_normativo</code></td>
 <td><code>enquadramento_normativo</code></td>
-<td>sim</td>
+<td>Humano</td>
 </tr>
 <tr>
 <td><code>grau_agencia</code></td>
 <td><code>grau_agencia</code></td>
-<td>sim</td>
+<td>Humano</td>
 </tr>
 <tr>
 <td><code>referencia_federal</code></td>
 <td><code>referencia_federal</code></td>
-<td>sim</td>
+<td>LLM</td>
 </tr>
 <tr>
 <td><code>escopo_empirico</code></td>
 <td><code>escopo_empirico</code></td>
-<td>sim</td>
+<td>LLM</td>
 </tr>
 <tr>
 <td><code>year</code></td>
 <td>(não aplicável)</td>
-<td>não (metadado bibliográfico)</td>
+<td>Humano (metadado bibliográfico)</td>
 </tr>
 </tbody>
 </table>
