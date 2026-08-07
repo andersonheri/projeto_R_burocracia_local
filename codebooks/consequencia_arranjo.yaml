@@ -1,0 +1,84 @@
+name: consequencia_arranjo
+instructions: 'Classifique que TIPO de efeito o artigo atribui ao arranjo burocratico
+  analisado (desempenho, corrupcao, equidade, etc.). Se o artigo for teorico-descritivo
+  e nao mensurar nenhum efeito empirico, use ''nao_mensurado''. ATENCAO: ''resiliencia_institucional''
+  e ''equidade_representatividade'' sao mais especificos que ''desempenho_politica''
+  e tem PRIORIDADE quando aplicaveis -- desempenho e'' o efeito generico/padrao; so''
+  classifique como desempenho se o efeito NAO for especificamente sobre continuidade/estabilidade
+  frente a choques (resiliencia) nem sobre inclusao/representacao de grupos (equidade).'
+multilabel: no
+lang: pt
+mode: manual
+created_at: 2026-08-06 17:07:43
+history: []
+categories:
+  desempenho_politica:
+    name: desempenho_politica
+    definition: O efeito medido e sobre o desempenho/qualidade da implementacao da
+      politica publica -- categoria generica, usada quando o efeito NAO se encaixa
+      melhor em resiliencia_institucional ou equidade_representatividade.
+    examples_pos: O arranjo burocratico esta associado a melhores indicadores de cobertura
+      do servico.
+    examples_neg: []
+    references: []
+    weight: 1.0
+    concept: ~
+    literature: ~
+  accountability_corrupcao:
+    name: accountability_corrupcao
+    definition: O efeito medido e sobre controle, transparencia, accountability ou
+      corrupcao.
+    examples_pos: A rotatividade de cargos de confianca aumenta o risco de desvio
+      de recursos publicos.
+    examples_neg: []
+    references: []
+    weight: 1.0
+    concept: ~
+    literature: ~
+  equidade_representatividade:
+    name: equidade_representatividade
+    definition: O efeito medido e sobre equidade, inclusao, representatividade de
+      grupos sociais OU sobre participacao/representacao em espacos deliberativos
+      e conselhos de politica publica (mesmo sem falar de raca/genero explicitamente
+      -- participacao de atores sociais em arenas decisorias tambem e' representatividade).
+    examples_pos:
+    - A maior representatividade racial entre os burocratas reduziu desigualdades
+      de acesso ao servico.
+    - O mapeamento da institucionalizacao dos conselhos gestores de politicas publicas
+      nos municipios brasileiros -- analisa conselhos como espacos de participacao/representacao
+      social nas politicas publicas.
+    examples_neg: O arranjo burocratico esta associado a melhores indicadores de cobertura
+      do servico.
+    references: []
+    weight: 1.0
+    concept: ~
+    literature: ~
+  resiliencia_institucional:
+    name: resiliencia_institucional
+    definition: O efeito medido e sobre a capacidade da burocracia de se manter estavel,
+      continuar entregando servicos ou adaptar-se ativamente frente a choques, crises,
+      pressoes politicas ou ambientes institucionais desfavoraveis -- inclui burocratas
+      que criam estrategias/repertorios de acao para sustentar politicas em contextos
+      adversos (ativismo/criatividade institucional), nao so' 'sobreviver' passivamente.
+    examples_pos:
+    - A equipe tecnica manteve a continuidade do programa mesmo apos a troca de governo.
+    - 'Activism among bureaucrats: creative social housing work in a conservative
+      institutional setting -- burocratas ativistas desenvolvem estrategias criativas
+      para sustentar politicas de habitacao social num ambiente institucional desfavoravel/conservador.'
+    examples_neg: O arranjo burocratico esta associado a melhores indicadores de cobertura
+      do servico.
+    references: []
+    weight: 1.0
+    concept: ~
+    literature: ~
+  nao_mensurado:
+    name: nao_mensurado
+    definition: O artigo e teorico-descritivo e nao mensura empiricamente nenhum efeito
+      do arranjo burocratico.
+    examples_pos: O texto discute conceitualmente os tipos de arranjo burocratico
+      local, sem testar seus efeitos.
+    examples_neg: []
+    references: []
+    weight: 1.0
+    concept: ~
+    literature: ~

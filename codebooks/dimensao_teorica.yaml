@@ -1,0 +1,65 @@
+name: dimensao_teorica
+instructions: 'Classifique qual(is) corrente(s) conceitual(is) orienta(m) a PERGUNTA
+  do artigo, independentemente do setor empirico do caso. O artigo pode mobilizar
+  mais de uma dimensao teorica ao mesmo tempo (ex.: ''Tecnica'' e ''Politica'' juntas)
+  -- classifique TODAS as que se aplicarem.'
+multilabel: yes
+lang: pt
+mode: manual
+created_at: 2026-08-06 17:07:43
+history: []
+categories:
+  tecnica:
+    name: tecnica
+    definition: Enfase em capacidade tecnica, competencia administrativa ou profissionalizacao
+      da burocracia.
+    examples_pos: O artigo mede a capacidade tecnica dos quadros administrativos municipais.
+    examples_neg: []
+    references: []
+    weight: 1.0
+    concept: ~
+    literature: ~
+  politica:
+    name: politica
+    definition: Enfase em nomeacoes politicas, controle partidario ou relacao entre
+      politicos eleitos e burocratas.
+    examples_pos: Investigamos como prefeitos usam cargos de confianca para controlar
+      a burocracia.
+    examples_neg: O artigo mede a capacidade tecnica dos quadros administrativos municipais.
+    references: []
+    weight: 1.0
+    concept: ~
+    literature: ~
+  discricionariedade:
+    name: discricionariedade
+    definition: Enfase na margem de decisao do burocrata de linha de frente (street-level
+      bureaucracy) na implementacao.
+    examples_pos: O estudo analisa como agentes de saude usam discricionariedade para
+      adaptar a politica ao contexto local.
+    examples_neg: []
+    references: []
+    weight: 1.0
+    concept: ~
+    literature: ~
+  representatividade:
+    name: representatividade
+    definition: 'Enfase em burocracia representativa: composicao social/demografica
+      dos burocratas e efeitos sobre equidade.'
+    examples_pos: Avaliamos se a representatividade racial entre professores afeta
+      resultados educacionais dos alunos.
+    examples_neg: []
+    references: []
+    weight: 1.0
+    concept: ~
+    literature: ~
+  resiliencia_resistencia:
+    name: resiliencia_resistencia
+    definition: Enfase na capacidade da burocracia de resistir a pressoes politicas,
+      cortes ou choques (resiliencia institucional).
+    examples_pos: O artigo mostra como servidores de carreira resistiram ao desmonte
+      de uma secretaria durante a crise fiscal.
+    examples_neg: []
+    references: []
+    weight: 1.0
+    concept: ~
+    literature: ~

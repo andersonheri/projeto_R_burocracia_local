@@ -1,0 +1,15 @@
+# Chaves de API -- nunca versionar
+.Renviron
+
+# Artefatos padrao do R/RStudio
+.Rhistory
+.RData
+.Rproj.user/
+
+# Artefatos do macOS
+.DS_Store
+
+# Saidas geradas pelos scripts (banco codificado, revisoes, relatorios)
+data/local_buro_codificado.xlsx
+output/*.xlsx
+output/*.html

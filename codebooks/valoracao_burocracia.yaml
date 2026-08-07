@@ -1,0 +1,76 @@
+name: valoracao_burocracia
+instructions: 'Classifique se o atributo burocratico analisado favorece (positiva)
+  ou prejudica (negativa) o resultado observado, e'' ambivalente/mista, ou o artigo
+  e'' meramente descritivo, sem atribuir direcao de valor (neutra). ATENCAO especial
+  a ''ambivalente_mista'' vs. ''neutra_descritiva'': use ambivalente_mista SO'' quando
+  o resumo mencionar EXPLICITAMENTE efeitos em DUAS direcoes opostas (ex.: ''positivo
+  em X mas negativo em Y'', ''melhora A e piora B'', resultados ''mistos'' ou ''heterogeneos''
+  entre grupos/contextos). Se o artigo so'' DESCREVE ou ANALISA um fenomeno sem chegar
+  a nenhuma avaliacao de efeito (nem positiva, nem negativa, nem as duas), a categoria
+  e'' ''neutra_descritiva'', nao ''ambivalente_mista'' -- ambivalente exige duas avaliacoes
+  conflitantes, nao ausencia de avaliacao.'
+multilabel: no
+lang: pt
+mode: manual
+created_at: 2026-08-06 17:07:43
+history: []
+categories:
+  positiva:
+    name: positiva
+    definition: O atributo burocratico analisado favorece o resultado observado.
+    examples_pos: A profissionalizacao da equipe elevou a qualidade do servico prestado.
+    examples_neg: []
+    references: []
+    weight: 1.0
+    concept: ~
+    literature: ~
+  negativa:
+    name: negativa
+    definition: O atributo burocratico analisado prejudica o resultado observado.
+    examples_pos: A alta rotatividade de cargos prejudicou a continuidade e a qualidade
+      do servico.
+    examples_neg: []
+    references: []
+    weight: 1.0
+    concept: ~
+    literature: ~
+  ambivalente_mista:
+    name: ambivalente_mista
+    definition: O artigo encontra EFEITOS EXPLICITOS em direcoes opostas (positivo
+      em um aspecto/contexto, negativo em outro), dependendo do contexto ou da dimensao
+      analisada -- nao apenas describe um fenomeno sem avaliar.
+    examples_pos: A insulamento tecnico melhorou a eficiencia, mas reduziu a responsividade
+      a demandas locais.
+    examples_neg:
+    - O papel da burocracia de nivel de rua na implementacao e (re)formulacao da Politica
+      Nacional de Humanizacao dos servicos de saude de Porto Alegre (RS) -- analisa
+      a interacao entre planejamento e implementacao local via discricionariedade
+      de burocratas de linha de frente, SEM concluir que houve efeito positivo em
+      um aspecto e negativo em outro (e' descritivo/analitico, classificado como neutra_descritiva,
+      nao ambivalente_mista).
+    - Analise espacial da burocracia da assistencia social nos municipios brasileiros
+      -- descreve dados sobre capacidade de implementacao e sua distribuicao espacial,
+      sem atribuir uma avaliacao de efeito misto/conflitante (neutra_descritiva, nao
+      ambivalente_mista).
+    references: []
+    weight: 1.2
+    concept: ~
+    literature: ~
+  neutra_descritiva:
+    name: neutra_descritiva
+    definition: O artigo descreve, mapeia ou analisa o atributo burocratico SEM atribuir
+      uma direcao de valor ao efeito -- inclui estudos que analisam processos, interacoes
+      ou capacidades sem concluir se o resultado foi bom ou ruim, ou se foi misto
+      entre duas direcoes especificas.
+    examples_pos:
+    - O estudo mapeia os tipos de arranjo burocratico existentes nos municipios, sem
+      avaliar seus efeitos.
+    - O papel da burocracia de nivel de rua na implementacao e (re)formulacao da Politica
+      Nacional de Humanizacao dos servicos de saude de Porto Alegre (RS) -- analisa
+      o processo de influencia mutua entre planejamento e implementacao local, sem
+      avaliar se o resultado foi positivo, negativo ou misto.
+    examples_neg: []
+    references: []
+    weight: 1.0
+    concept: ~
+    literature: ~

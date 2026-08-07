@@ -1,0 +1,67 @@
+name: nivel_governo
+instructions: Classifique o nivel de governo em que o artigo situa substantivamente
+  a burocracia analisada. Estudos multiniveis (que tratam mais de um nivel de governo)
+  devem ser classificados como 'incluido_municipal' SOMENTE se tiverem um componente
+  municipal/local substantivo (nao apenas coadjuvante); caso contrario, 'excluido_multinivel_sem_foco_municipal'.
+multilabel: no
+lang: pt
+mode: manual
+created_at: 2026-08-05 14:23:53
+history: []
+categories:
+  incluido_municipal:
+    name: incluido_municipal
+    definition: Foco substantivo em burocracia municipal ou local, incluindo estudos
+      multiniveis com componente municipal substantivo.
+    examples_pos:
+    - O estudo compara a burocracia de secretarias municipais de saude em 40 municipios.
+    - A analise multinivel examina burocracias federal, estadual e municipal, com
+      enfase comparativa no nivel municipal.
+    examples_neg: []
+    references: []
+    weight: 1.0
+    concept: ~
+    literature: ~
+  excluido_federal:
+    name: excluido_federal
+    definition: Foco substantivo em burocracia do governo federal.
+    examples_pos: O artigo analisa a burocracia de um ministerio do governo federal.
+    examples_neg: O estudo compara a burocracia de secretarias municipais de saude
+      em 40 municipios.
+    references: []
+    weight: 1.0
+    concept: ~
+    literature: ~
+  excluido_estadual:
+    name: excluido_estadual
+    definition: Foco substantivo em burocracia de governo estadual.
+    examples_pos: O artigo analisa a burocracia de uma secretaria de estado.
+    examples_neg: []
+    references: []
+    weight: 1.0
+    concept: ~
+    literature: ~
+  excluido_nao_especificado:
+    name: excluido_nao_especificado
+    definition: O nivel de governo da burocracia analisada nao e' claramente especificado
+      no texto.
+    examples_pos: O artigo discute burocracia publica em geral, sem indicar a esfera
+      de governo.
+    examples_neg: []
+    references: []
+    weight: 1.0
+    concept: ~
+    literature: ~
+  excluido_multinivel_sem_foco_municipal:
+    name: excluido_multinivel_sem_foco_municipal
+    definition: O estudo e' multinivel (mais de um nivel de governo), mas sem componente
+      municipal substantivo -- o municipal aparece apenas de forma coadjuvante ou
+      ausente.
+    examples_pos: O estudo compara burocracias federal e estadual, mencionando o municipal
+      apenas de passagem.
+    examples_neg: A analise multinivel examina burocracias federal, estadual e municipal,
+      com enfase comparativa no nivel municipal.
+    references: []
+    weight: 1.2
+    concept: ~
+    literature: ~

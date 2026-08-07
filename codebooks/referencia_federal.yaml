@@ -1,0 +1,32 @@
+name: referencia_federal
+instructions: Classifique se o artigo usa o padrao federal/nacional como vara de medir
+  a burocracia local, ou trata o caso local por si mesmo, sem esse referencial comparativo.
+multilabel: no
+lang: pt
+mode: manual
+created_at: 2026-08-06 17:07:43
+history: []
+categories:
+  usa_federal_como_benchmark:
+    name: usa_federal_como_benchmark
+    definition: O artigo compara explicitamente a burocracia local ao padrao ou a
+      normas do governo federal.
+    examples_pos: Comparamos a profissionalizacao da burocracia municipal com os parametros
+      do servico civil federal.
+    examples_neg: []
+    references: []
+    weight: 1.0
+    concept: ~
+    literature: ~
+  trata_local_como_caso_autonomo:
+    name: trata_local_como_caso_autonomo
+    definition: O artigo analisa a burocracia local sem usar o nivel federal como
+      referencia comparativa.
+    examples_pos: O estudo analisa a burocracia municipal em seus proprios termos,
+      sem comparacao com o governo federal.
+    examples_neg: Comparamos a profissionalizacao da burocracia municipal com os parametros
+      do servico civil federal.
+    references: []
+    weight: 1.0
+    concept: ~
+    literature: ~

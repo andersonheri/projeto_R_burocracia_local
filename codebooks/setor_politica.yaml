@@ -1,0 +1,89 @@
+name: setor_politica
+instructions: Classifique em qual area empirica de politica publica o artigo situa
+  o caso estudado (o CAMPO DE ATUACAO da burocracia analisada, nao a teoria mobilizada).
+  Baseie-se no que o titulo e o abstract descrevem como objeto empirico.
+multilabel: no
+lang: pt
+mode: manual
+created_at: 2026-08-06 17:07:43
+history: []
+categories:
+  saude:
+    name: saude
+    definition: Caso estudado em politicas ou servicos de saude (SUS, agentes de saude,
+      vigilancia sanitaria, etc.).
+    examples_pos: Analisamos o desempenho de agentes comunitarios de saude em municipios
+      do Nordeste.
+    examples_neg: []
+    references: []
+    weight: 1.0
+    concept: ~
+    literature: ~
+  educacao:
+    name: educacao
+    definition: Caso estudado em politicas ou servicos educacionais (professores,
+      gestao escolar, redes municipais de ensino).
+    examples_pos: O artigo examina a autonomia de diretores escolares na rede municipal
+      de ensino.
+    examples_neg: []
+    references: []
+    weight: 1.0
+    concept: ~
+    literature: ~
+  assistencia_social:
+    name: assistencia_social
+    definition: Caso estudado em assistencia social (CRAS, CREAS, Bolsa Familia, burocracia
+      do SUAS).
+    examples_pos: Investigamos a atuacao de assistentes sociais no CRAS de municipios
+      paulistas.
+    examples_neg: []
+    references: []
+    weight: 1.0
+    concept: ~
+    literature: ~
+  gestao_fiscal_administrativa_geral:
+    name: gestao_fiscal_administrativa_geral
+    definition: Caso estudado em gestao fiscal, administrativa ou de pessoal do municipio,
+      sem foco em um setor social especifico.
+    examples_pos: O estudo compara a capacidade administrativa e fiscal de secretarias
+      municipais de administracao.
+    examples_neg: Analisamos o desempenho de agentes comunitarios de saude em municipios
+      do Nordeste.
+    references: []
+    weight: 1.0
+    concept: ~
+    literature: ~
+  meio_ambiente_infraestrutura:
+    name: meio_ambiente_infraestrutura
+    definition: Caso estudado em meio ambiente, saneamento, mobilidade ou infraestrutura
+      urbana.
+    examples_pos: O artigo trata da fiscalizacao ambiental exercida por burocratas
+      municipais em areas de protecao.
+    examples_neg: []
+    references: []
+    weight: 1.0
+    concept: ~
+    literature: ~
+  seguranca:
+    name: seguranca
+    definition: Caso estudado em seguranca publica municipal (guardas municipais,
+      policiamento comunitario, etc.).
+    examples_pos: Analisamos a discricionariedade de guardas municipais no policiamento
+      de bairros perifericos.
+    examples_neg: []
+    references: []
+    weight: 1.0
+    concept: ~
+    literature: ~
+  transversal:
+    name: transversal
+    definition: O artigo nao se ancora em um setor especifico; trata da burocracia
+      local de forma geral ou comparando varios setores ao mesmo tempo (categoria
+      'Transversal' do codebook_burocracia_local.docx).
+    examples_pos: O estudo compara burocratas de diferentes secretarias municipais
+      sem focar em uma politica especifica.
+    examples_neg: []
+    references: []
+    weight: 1.0
+    concept: ~
+    literature: ~

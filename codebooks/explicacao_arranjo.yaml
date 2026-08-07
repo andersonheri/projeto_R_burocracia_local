@@ -1,0 +1,111 @@
+name: explicacao_arranjo
+instructions: 'Classifique o que o artigo aponta como CAUSA de a burocracia estar
+  organizada daquele jeito especifico (a explicacao causal proposta). Se o artigo
+  nao discute causa alguma para o arranjo (ex.: e'' apenas descritivo ou usa o arranjo
+  como variavel de controle, sem explicar sua origem), use ''nao_aplicavel''. IMPORTANTE:
+  a explicacao causal pode estar OPERACIONALIZADA como variavel independente/preditor
+  num modelo empirico, nao precisa vir com a palavra ''porque'' -- se o resumo diz
+  que o estudo testa se X (ex.: profissionalizacao, desenho institucional, capacidade
+  fiscal) EXPLICA, INFLUENCIA, DETERMINA ou e'' PREDITOR do arranjo/desempenho da
+  burocracia, isso conta como explicacao causal, NAO como ''nao_aplicavel''.'
+multilabel: no
+lang: pt
+mode: manual
+created_at: 2026-08-06 17:07:43
+history: []
+categories:
+  nao_aplicavel:
+    name: nao_aplicavel
+    definition: O artigo nao aponta nenhuma causa/explicacao para o arranjo burocratico
+      observado (uso descritivo, ou o arranjo e' tratado como dado, nao como algo
+      a explicar).
+    examples_pos: O estudo apenas descreve o quadro de pessoal das secretarias municipais,
+      sem discutir por que ele e' assim.
+    examples_neg: []
+    references: []
+    weight: 1.0
+    concept: ~
+    literature: ~
+  politica_eleitoral:
+    name: politica_eleitoral
+    definition: O arranjo e explicado por incentivos eleitorais, competicao partidaria
+      ou ciclos politicos.
+    examples_pos: A rotatividade de cargos e explicada pela alternancia de coalizoes
+      apos as eleicoes municipais.
+    examples_neg: []
+    references: []
+    weight: 1.0
+    concept: ~
+    literature: ~
+  capacidade_administrativa_fiscal:
+    name: capacidade_administrativa_fiscal
+    definition: O arranjo e explicado por restricoes, recursos ou fatores contingenciais
+      administrativos e fiscais do municipio (inclui estudos que testam empiricamente
+      esses fatores como determinantes de desempenho/eficiencia).
+    examples_pos:
+    - Municipios com maior receita propria estruturam equipes tecnicas mais robustas.
+    - Influencia de fatores contingenciais no desempenho socioeconomico de governos
+      locais -- testa se fatores contingenciais (ambiente externo, tecnologia, estrutura,
+      recursos) influenciam o desempenho municipal.
+    examples_neg: O estudo apenas descreve o quadro de pessoal das secretarias municipais,
+      sem discutir por que ele e' assim.
+    references: []
+    weight: 1.0
+    concept: ~
+    literature: ~
+  perfil_gestor_local:
+    name: perfil_gestor_local
+    definition: O arranjo e explicado por caracteristicas pessoais/profissionais do
+      prefeito ou secretario (formacao, experiencia, estilo de gestao).
+    examples_pos: A trajetoria profissional do prefeito explica a escolha por profissionalizar
+      a equipe tecnica.
+    examples_neg: []
+    references: []
+    weight: 1.0
+    concept: ~
+    literature: ~
+  desenho_institucional_inducao_federal:
+    name: desenho_institucional_inducao_federal
+    definition: 'O arranjo e explicado por regras, incentivos, instrumentos ou condicionalidades
+      definidas pelo governo federal/estadual (inducao vertical) -- inclui artigos
+      sobre coordenacao intergovernamental, instrumentos de integracao de politicas
+      (ex.: cadastros unicos, conselhos, redes de politica) quando o resumo trata
+      esses instrumentos como o que MOLDA o arranjo local, nao so'' como pano de fundo
+      descritivo.'
+    examples_pos:
+    - A exigencia federal de plano de carreira para acessar recursos do fundo nacional
+      moldou a estrutura da secretaria.
+    - Os multiplos papeis dos governos estaduais na politica educacional brasileira
+      -- analisa como a coordenacao do governo federal e' central para a consistencia
+      das politicas sociais subnacionais, moldando o papel dos governos estaduais.
+    - 'Instrumentos e integracao de politicas publicas: a rede do Cadastro Unico --
+      analisa instrumentos de implementacao (o Cadastro Unico) como o que estrutura/integra
+      a politica, nao apenas descreve a rede.'
+    examples_neg: O estudo apenas descreve o quadro de pessoal das secretarias municipais,
+      sem discutir por que ele e' assim.
+    references: []
+    weight: 1.0
+    concept: ~
+    literature: ~
+  profissionalizacao_carreira:
+    name: profissionalizacao_carreira
+    definition: 'O arranjo/desempenho e'' explicado pelo grau de profissionalizacao,
+      qualificacao ou existencia de carreira burocratica consolidada -- inclui estudos
+      que testam empiricamente se a composicao/qualificacao da burocracia (ex.: proporcao
+      de servidores com ensino superior, status profissional) EXPLICA ou INFLUENCIA
+      outro resultado (ex.: digitalizacao, capacidade estatal, implementacao de politicas).'
+    examples_pos:
+    - A existencia de concurso publico e plano de carreira consolidado explica a estabilidade
+      da equipe tecnica.
+    - A configuracao da composicao burocratica importa? O papel da burocracia na transformacao
+      digital dos municipios brasileiros -- testa se a composicao e qualificacao da
+      burocracia influenciam o processo de digitalizacao municipal.
+    - Burocracias profissionais ampliam capacidade estatal para implementar politicas?
+      -- usa 'servidores com ensino superior' como proxy de profissionalizacao para
+      explicar a capacidade estatal de implementacao.
+    examples_neg: O estudo apenas descreve o quadro de pessoal das secretarias municipais,
+      sem discutir por que ele e' assim.
+    references: []
+    weight: 1.0
+    concept: ~
+    literature: ~

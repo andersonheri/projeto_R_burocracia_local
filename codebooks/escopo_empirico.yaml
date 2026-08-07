@@ -1,0 +1,51 @@
+name: escopo_empirico
+instructions: Classifique sobre quantos casos a conclusao do artigo se sustenta, o
+  que afeta o quanto se pode generalizar o achado.
+multilabel: no
+lang: pt
+mode: manual
+created_at: 2026-08-06 17:07:43
+history: []
+categories:
+  caso_unico:
+    name: caso_unico
+    definition: O artigo se baseia em um unico municipio ou estudo de caso.
+    examples_pos: Este e' um estudo de caso sobre a Secretaria de Educacao de um unico
+      municipio.
+    examples_neg: []
+    references: []
+    weight: 1.0
+    concept: ~
+    literature: ~
+  municipios_comparados_n_pequeno:
+    name: municipios_comparados_n_pequeno
+    definition: O artigo compara um numero pequeno de municipios (mais de um, mas
+      nao uma amostra grande).
+    examples_pos: Comparamos a burocracia de tres municipios de porte medio no interior
+      de Minas Gerais.
+    examples_neg: []
+    references: []
+    weight: 1.0
+    concept: ~
+    literature: ~
+  amostra_grande_n_maior_30:
+    name: amostra_grande_n_maior_30
+    definition: O artigo usa uma amostra grande, com mais de 30 municipios.
+    examples_pos: A analise cobre uma amostra de 250 municipios brasileiros com dados
+      do Censo do Servidor Publico.
+    examples_neg: []
+    references: []
+    weight: 1.0
+    concept: ~
+    literature: ~
+  teorico_sem_caso:
+    name: teorico_sem_caso
+    definition: O artigo e' teorico ou conceitual e nao analisa nenhum caso empirico
+      concreto.
+    examples_pos: O artigo propõe uma tipologia teorica de arranjos burocraticos locais,
+      sem aplicacao empirica.
+    examples_neg: []
+    references: []
+    weight: 1.0
+    concept: ~
+    literature: ~

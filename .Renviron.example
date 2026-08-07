@@ -1,0 +1,31 @@
+# =============================================================================
+# .Renviron.example
+#
+# Modelo para armazenar chaves de API com seguranca. NAO edite este arquivo
+# com sua chave real -- copie-o para ".Renviron" (sem ".example") e edite a
+# copia. O ".Renviron" real fica de fora do controle de versao (ver
+# .gitignore) e nunca deve ser compartilhado ou colado em chat/print/commit.
+#
+# Como usar:
+#   1. cp .Renviron.example .Renviron
+#   2. Edite .Renviron e cole sua chave real depois do "="
+#   3. Reinicie a sessao do R (Session > Restart R no RStudio, ou feche e
+#      reabra o R) -- o .Renviron so' e' lido na inicializacao da sessao.
+#   4. Confirme com: Sys.getenv("GEMINI_API_KEY") != ""
+#
+# Alternativa mais segura ainda (evita editar o arquivo na mao):
+#   usethis::edit_r_environ(scope = "project")
+#   -> abre o .Renviron do projeto num editor, cole a chave, salve, reinicie o R.
+# =============================================================================
+
+# Chave do Google Gemini (usada em scripts/02_classificacao_llm_conteudo.R,
+# chat_google_gemini()). O ellmer aceita GEMINI_API_KEY ou GOOGLE_API_KEY --
+# use so' uma das duas.
+GEMINI_API_KEY=coloque_sua_chave_gemini_aqui
+
+# Chaves alternativas, caso troque de provedor no chat_google_gemini()/
+# chat_groq()/chat_openai()/chat_anthropic() (descomente a que for usar; nao
+# precisa preencher as que nao forem usadas):
+# GROQ_API_KEY=coloque_sua_chave_groq_aqui
+# OPENAI_API_KEY=coloque_sua_chave_openai_aqui
+# ANTHROPIC_API_KEY=coloque_sua_chave_anthropic_aqui

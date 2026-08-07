@@ -1,0 +1,39 @@
+name: elegibilidade_analitica
+instructions: Decida se o artigo faz USO SUBSTANTIVO de um construto burocratico (burocracia,
+  burocratas, servidores publicos, capacidade administrativa, corpo tecnico etc.)
+  -- ou seja, se a burocracia e' variavel independente (VI), variavel dependente (VD),
+  ou objeto analitico explicito do artigo -- em oposicao a uma mencao apenas tangencial/lateral,
+  sem analise propria.
+multilabel: no
+lang: pt
+mode: manual
+created_at: 2026-08-05 14:23:53
+history: []
+categories:
+  incluido:
+    name: incluido
+    definition: A burocracia (ou construto equivalente) e' VI, VD ou objeto analitico
+      explicito e central do artigo.
+    examples_pos:
+    - O artigo investiga como a capacidade tecnica da burocracia municipal afeta a
+      implementacao de politicas de saude.
+    - Analisamos o comportamento discricionario de burocratas de nivel de rua na aplicacao
+      de beneficios sociais.
+    examples_neg: O artigo sobre orcamento participativo cita de passagem a 'morosidade
+      burocratica' sem analisa-la.
+    references: []
+    weight: 1.0
+    concept: ~
+    literature: ~
+  excluido:
+    name: excluido
+    definition: A burocracia e' mencionada apenas de forma tangencial ou lateral;
+      nao e' o foco analitico do artigo.
+    examples_pos: O artigo sobre orcamento participativo cita de passagem a 'morosidade
+      burocratica' sem analisa-la.
+    examples_neg: O artigo investiga como a capacidade tecnica da burocracia municipal
+      afeta a implementacao de politicas de saude.
+    references: []
+    weight: 1.0
+    concept: ~
+    literature: ~

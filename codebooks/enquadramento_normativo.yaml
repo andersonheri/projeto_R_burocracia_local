@@ -1,0 +1,81 @@
+name: enquadramento_normativo
+instructions: 'Classifique qual e'' a mensagem de fundo do artigo sobre burocracia
+  em geral. ATENCAO especial a ''ambivalente'': nao e'' uma categoria residual/generica
+  -- so'' use quando o resumo mencionar EXPLICITAMENTE tanto um elemento de risco/
+  controle QUANTO um elemento de recurso/fortalecimento, sem que um dos dois predomine
+  na conclusao. Resumos que so'' mencionam capacidade, profissionalizacao ou desempenho
+  administrativo (mesmo describendo desafios/limitacoes tecnicas ao longo do caminho)
+  continuam sendo ''recurso_a_fortalecer'' -- a mera existencia de um problema ou
+  desafio NAO torna o enquadramento ambivalente; o que torna ambivalente e'' o artigo
+  apontar EFEITOS ou AVALIACOES em direcoes opostas.'
+multilabel: no
+lang: pt
+mode: manual
+created_at: 2026-08-06 17:07:43
+history: []
+categories:
+  risco_a_controlar:
+    name: risco_a_controlar
+    definition: A burocracia e' tratada principalmente como um risco que precisa ser
+      controlado, fiscalizado ou limitado.
+    examples_pos: O artigo enfatiza a necessidade de mais controles para conter o
+      poder discricionario dos burocratas.
+    examples_neg: 'Nomeacoes politicas nos governos municipais e performance burocratica:
+      avaliando o desempenho -- o artigo demonstra padroes de nomeacoes politicas
+      e como refletem o desempenho institucional, sem defender mais controle nem apontar
+      so'' risco (classificado como ambivalente, nao risco_a_controlar).'
+    references: []
+    weight: 1.0
+    concept: ~
+    literature: ~
+  recurso_a_fortalecer:
+    name: recurso_a_fortalecer
+    definition: 'A burocracia e'' tratada principalmente como um recurso ou capacidade
+      a ser fortalecida -- inclui artigos que discutem desafios, limitacoes tecnicas
+      ou obstaculos administrativos ENQUANTO PARTE do argumento de fortalecimento
+      (ex.: ''a falta de X limita a capacidade, por isso e'' preciso investir em Y''),
+      desde que a conclusao/implicacao do resumo aponte para fortalecer, nao para
+      controlar nem para um resultado misto.'
+    examples_pos: O artigo defende investimento em profissionalizacao como caminho
+      para melhorar a politica publica.
+    examples_neg:
+    - O artigo enfatiza a necessidade de mais controles para conter o poder discricionario
+      dos burocratas.
+    - A (re)producao de entrelacamentos sociomateriais na pratica de transicao entre
+      governos municipais -- estuda como servidores de carreira lidam com a transicao
+      de governo por meio de praticas sociomateriais; nao defende fortalecimento nem
+      aponta risco, descreve o fenomeno em si (classificado como ambivalente/sem inclinacao
+      clara, nao recurso_a_fortalecer).
+    references: []
+    weight: 1.0
+    concept: ~
+    literature: ~
+  ambivalente:
+    name: ambivalente
+    definition: 'O artigo apresenta EFEITOS, AVALIACOES ou RESULTADOS em direcoes
+      opostas sobre a burocracia (ex.: ''positivo em um contexto, negativo em outro'',
+      ''melhora X mas piora Y''), OU e'' um estudo primariamente descritivo/analitico
+      que nao avalia a burocracia nem como risco a conter nem como recurso a fortalecer
+      -- so'' descreve/explica um fenomeno sem tomar posicao normativa clara em nenhuma
+      das duas direcoes. NAO confundir com um artigo que apenas menciona desafios
+      tecnicos a caminho de defender fortalecimento (esse e'' ''recurso_a_fortalecer'',
+      nao ambivalente).'
+    examples_pos:
+    - 'Nomeacoes politicas nos governos municipais e performance burocratica: avaliando
+      o desempenho -- demonstra padroes de nomeacoes politicas que refletem variados
+      niveis de qualidade institucional, sem concluir que nomeacoes sao so'' risco
+      ou so'' precisam de mais capacidade tecnica.'
+    - 'A estrutura de provisao dos servicos de saneamento basico no Brasil: uma analise
+      comparativa do desempenho dos provedores publicos e privados -- compara desempenho
+      de provedores publicos e privados sem evidencia forte de que um grupo supere
+      o outro, resultado misto/inconclusivo.'
+    - O papel da burocracia de nivel de rua na implementacao e (re)formulacao da Politica
+      Nacional de Humanizacao dos servicos de saude de Porto Alegre (RS) -- analisa
+      a discricionariedade de burocratas de linha de frente na (re)formulacao de politica,
+      descrevendo o fenomeno sem posicionar a discricionariedade como risco a conter
+      nem como capacidade a fortalecer.
+    examples_neg: []
+    references: []
+    weight: 1.0
+    concept: ~
+    literature: ~

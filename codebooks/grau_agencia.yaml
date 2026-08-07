@@ -1,0 +1,71 @@
+name: grau_agencia
+instructions: 'Classifique se o texto trata os burocratas como sujeitos que decidem
+  e agem (resistem e/ou negociam) ou como pecas passivas de uma estrutura (numeros
+  numa regressao, categorias administrativas sem voz propria). ATENCAO especial a
+  ''ambos'': use quando o DESENHO METODOLOGICO combina os dois olhares (ex.: mede/quantifica
+  a burocracia como variavel E tambem discute/entrevista/da voz a decisao e estrategia
+  dos burocratas -- combinacao de metodos quanti+quali, ou de dados administrativos
+  com entrevistas/etnografia), OU quando o proprio objeto do artigo e'' sobre burocratas
+  que atuam DENTRO de uma estrutura/instrumento formal (o burocrata tem margem de
+  decisao MESMO sendo tambem, ao mesmo tempo, peca de um sistema estruturado, ex.:
+  agente comunitario de saude que tem vinculo/funcao formal definida mas exerce escolhas
+  na pratica).'
+multilabel: no
+lang: pt
+mode: manual
+created_at: 2026-08-06 17:07:43
+history: []
+categories:
+  agente_com_escolhas_proprias:
+    name: agente_com_escolhas_proprias
+    definition: Os burocratas sao retratados PRINCIPAL OU EXCLUSIVAMENTE como atores
+      com margem de decisao, estrategia ou resistencia propria -- sem tratamento simetrico
+      como variavel/estrutura no mesmo estudo.
+    examples_pos: Os agentes de saude negociam ativamente a forma de implementar a
+      politica no territorio.
+    examples_neg: 'Entre o vinculo e o distanciamento: desafios na atuacao de Agentes
+      Comunitarias de Saude -- embora enfatize a atuacao (escolhas) dos agentes comunitarios
+      de saude, tambem os situa formalmente como pecas de um sistema estruturado de
+      atencao primaria (PHC), o que aproxima de ''ambos'' quando o resumo tambem trata
+      a funcao formal deles como estrutura.'
+    references: []
+    weight: 1.0
+    concept: ~
+    literature: ~
+  estrutura_instrumento_passivo:
+    name: estrutura_instrumento_passivo
+    definition: Os burocratas aparecem APENAS como categorias administrativas ou variaveis
+      numericas, sem NENHUMA discussao de agencia, decisao ou estrategia propria no
+      resumo.
+    examples_pos: O numero de servidores por secretaria e' usado como proxy de capacidade
+      administrativa, sem discutir seu comportamento.
+    examples_neg: Os agentes de saude negociam ativamente a forma de implementar a
+      politica no territorio.
+    references: []
+    weight: 1.0
+    concept: ~
+    literature: ~
+  ambos:
+    name: ambos
+    definition: 'O artigo combina os dois olhares: trata os burocratas tanto como
+      estrutura/variavel administrativa QUANTO como agentes com escolhas proprias
+      -- sinal tipico no resumo: combina metodo quantitativo (dados administrativos,
+      indicadores) com metodo qualitativo (entrevistas, etnografia, estudo de caso
+      sobre estrategias de atuacao), OU descreve o burocrata ocupando um papel/vinculo
+      formal estruturado ao mesmo tempo que exerce escolhas dentro dele.'
+    examples_pos:
+    - O estudo quantifica o quadro de pessoal, mas tambem entrevista servidores sobre
+      suas estrategias de trabalho.
+    - 'Institucionalizacao da Politica Nacional de Residuos Solidos: dilemas e constrangimentos
+      na Regiao Metropolitana de Aracaju (SE) -- avalia a institucionalizacao (estrutura
+      formal) a partir da gestao compartilhada, usando pesquisa qualitativa com entrevistas
+      sobre a atuacao dos atores dentro dessa estrutura.'
+    - 'Entre o vinculo e o distanciamento: desafios na atuacao de Agentes Comunitarias
+      de Saude -- agentes comunitarios de saude tem funcao formal estruturada (vinculo
+      com familias no territorio) e, ao mesmo tempo, exercem escolhas praticas nessa
+      atuacao.'
+    examples_neg: []
+    references: []
+    weight: 1.0
+    concept: ~
+    literature: ~

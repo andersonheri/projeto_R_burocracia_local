@@ -1,0 +1,83 @@
+name: relacao_politica_burocracia
+instructions: 'Classifique como o artigo descreve a interacao entre quem foi eleito
+  ou nomeado politicamente e quem ocupa a burocracia: quem manda em quem, ou como
+  negociam. ATENCAO especial a ''conflito_resistencia'': diferente de ''barganha_acordo''
+  (ha'' negociacao/concessao mutua, ainda que tensa) e de ''controle_politico'' (o
+  politico impoe e a burocracia obedece/se adapta), ''conflito_resistencia'' exige
+  um verbo/substantivo de CONFRONTO ABERTO no resumo (ex.: ''confronto'', ''resistencia'',
+  ''greve'', ''falha na adocao/ implementacao por resistencia'', ''tensao nao resolvida'')
+  -- nao basta haver problemas ou desafios na relacao, precisa haver oposicao explicita
+  de um lado ao arranjo imposto pelo outro.'
+multilabel: no
+lang: pt
+mode: manual
+created_at: 2026-08-06 17:07:43
+history: []
+categories:
+  controle_politico:
+    name: controle_politico
+    definition: Politicos eleitos ou nomeados exercem controle hierarquico/decisorio
+      sobre a burocracia.
+    examples_pos: O prefeito nomeia e demite livremente os secretarios, subordinando
+      a burocracia a agenda politica.
+    examples_neg: []
+    references: []
+    weight: 1.0
+    concept: ~
+    literature: ~
+  autonomia_tecnica_insulamento:
+    name: autonomia_tecnica_insulamento
+    definition: A burocracia opera com insulamento, protegida de ingerencia politica
+      direta.
+    examples_pos: Servidores de carreira mantem autonomia tecnica mesmo com trocas
+      de governo.
+    examples_neg: O prefeito nomeia e demite livremente os secretarios, subordinando
+      a burocracia a agenda politica.
+    references: []
+    weight: 1.0
+    concept: ~
+    literature: ~
+  barganha_acordo:
+    name: barganha_acordo
+    definition: Politicos e burocratas negociam, trocam apoio ou fazem concessoes
+      mutuas -- ha' acomodacao, nao confronto aberto.
+    examples_pos: Vereadores e servidores negociam a manutencao de cargos em troca
+      de apoio a projetos do executivo.
+    examples_neg: 'Das pressoes as ousadias: o confronto entre a descentralizacao
+      tutelada e a gestao em rede no SUS -- descreve CONFRONTO explicito entre a descentralizacao
+      tutelada (imposta) e a gestao em rede (resistencia local), nao uma negociacao/concessao
+      mutua (classificado como conflito_resistencia, nao barganha_acordo).'
+    references: []
+    weight: 1.0
+    concept: ~
+    literature: ~
+  conflito_resistencia:
+    name: conflito_resistencia
+    definition: Ha' confronto ABERTO entre burocratas e atores politicos, com resistencia
+      explicita de um lado ao arranjo/decisao do outro (greve, confronto, falha de
+      adocao por resistencia, tensao nao resolvida) -- nao apenas desafios ou problemas
+      de implementacao em geral.
+    examples_pos:
+    - Servidores organizaram greve para resistir a uma reforma administrativa imposta
+      pelo prefeito.
+    - 'Das pressoes as ousadias: o confronto entre a descentralizacao tutelada e a
+      gestao em rede no SUS -- confronto explicito entre o modelo de descentralizacao
+      tutelada imposto e a gestao em rede que resiste a ele.'
+    - A falta de trabalho institucional e mudancas organizacionais incompletas em
+      municipios brasileiros -- explica a FALHA da adocao compulsoria de novas praticas
+      por resistencia organizacional, nao uma negociacao bem-sucedida.
+    examples_neg: []
+    references: []
+    weight: 1.0
+    concept: ~
+    literature: ~
+  nao_aborda_diretamente:
+    name: nao_aborda_diretamente
+    definition: O artigo nao discute explicitamente a relacao entre politicos e burocratas.
+    examples_pos: O estudo foca exclusivamente em indicadores de desempenho, sem discutir
+      a relacao com o poder politico.
+    examples_neg: []
+    references: []
+    weight: 1.0
+    concept: ~
+    literature: ~

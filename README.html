@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc 3.10" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>README</title>
+  <style>
+
+html {
+color: #1a1a1a;
+background-color: #fdfdfd;
+}
+body {
+margin: 0 auto;
+max-width: 36em;
+padding-left: 50px;
+padding-right: 50px;
+padding-top: 50px;
+padding-bottom: 50px;
+hyphens: auto;
+overflow-wrap: break-word;
+text-rendering: optimizeLegibility;
+font-kerning: normal;
+}
+@media (max-width: 600px) {
+body {
+font-size: 0.9em;
+padding: 12px;
+}
+h1 {
+font-size: 1.8em;
+}
+}
+@media print {
+html {
+background-color: white;
+}
+body {
+background-color: transparent;
+color: black;
+font-size: 12pt;
+}
+p, h2, h3 {
+orphans: 3;
+widows: 3;
+}
+h2, h3, h4 {
+page-break-after: avoid;
+}
+}
+p {
+margin: 1em 0;
+}
+a {
+color: #1a1a1a;
+}
+a:visited {
+color: #1a1a1a;
+}
+img {
+max-width: 100%;
+}
+svg {
+height: auto;
+max-width: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 1.4em;
+}
+h5, h6 {
+font-size: 1em;
+font-style: italic;
+}
+h6 {
+font-weight: normal;
+}
+ol, ul {
+padding-left: 1.7em;
+margin-top: 1em;
+}
+li > ol, li > ul {
+margin-top: 0;
+}
+blockquote {
+margin: 1em 0 1em 1.7em;
+padding-left: 1em;
+border-left: 2px solid #e6e6e6;
+color: #606060;
+}
+code {
+white-space: pre-wrap;
+font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+font-size: 85%;
+margin: 0;
+hyphens: manual;
+}
+pre {
+margin: 1em 0;
+overflow: auto;
+}
+pre code {
+padding: 0;
+overflow: visible;
+overflow-wrap: normal;
+}
+.sourceCode {
+background-color: transparent;
+overflow: visible;
+}
+hr {
+border: none;
+border-top: 1px solid #1a1a1a;
+height: 1px;
+margin: 1em 0;
+}
+table {
+margin: 1em 0;
+border-collapse: collapse;
+width: 100%;
+overflow-x: auto;
+display: block;
+font-variant-numeric: lining-nums tabular-nums;
+}
+table caption {
+margin-bottom: 0.75em;
+}
+tbody {
+margin-top: 0.5em;
+border-top: 1px solid #1a1a1a;
+border-bottom: 1px solid #1a1a1a;
+}
+th {
+border-top: 1px solid #1a1a1a;
+padding: 0.25em 0.5em 0.25em 0.5em;
+}
+td {
+padding: 0.125em 0.5em 0.25em 0.5em;
+}
+header {
+margin-bottom: 4em;
+text-align: center;
+}
+#TOC li {
+list-style: none;
+}
+#TOC ul {
+padding-left: 1.3em;
+}
+#TOC > ul {
+padding-left: 0;
+}
+#TOC a:not(:hover) {
+text-decoration: none;
+}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+{ counter-reset: source-line 0; }
+pre.numberSource code > span
+{ position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
+div.sourceCode
+{ }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } 
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.at { color: #7d9029; } 
+code span.bn { color: #40a070; } 
+code span.bu { color: #008000; } 
+code span.cf { color: #007020; font-weight: bold; } 
+code span.ch { color: #4070a0; } 
+code span.cn { color: #880000; } 
+code span.co { color: #60a0b0; font-style: italic; } 
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.do { color: #ba2121; font-style: italic; } 
+code span.dt { color: #902000; } 
+code span.dv { color: #40a070; } 
+code span.er { color: #ff0000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #40a070; } 
+code span.fu { color: #06287e; } 
+code span.im { color: #008000; font-weight: bold; } 
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.kw { color: #007020; font-weight: bold; } 
+code span.op { color: #666666; } 
+code span.ot { color: #007020; } 
+code span.pp { color: #bc7a00; } 
+code span.sc { color: #4070a0; } 
+code span.ss { color: #bb6688; } 
+code span.st { color: #4070a0; } 
+code span.va { color: #19177c; } 
+code span.vs { color: #4070a0; } 
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">README</h1>
+</header>
+<h1 id="projeto-burocracia-local-codificação-e-análise-do-banco-final">Projeto:
+Burocracia Local (codificação e análise do banco final)</h1>
+<p>Pipeline para (1) rodar uma classificação automática (LLM, via pacote
+<code>acR</code>) das 10 variáveis de conteúdo do
+<code>codebook_burocracia_local.docx</code> sobre o corpus final, (2)
+comparar essa classificação com a codificação manual já existente
+(concordância/IRR por variável), e (3) produzir a análise
+descritiva/bibliométrica final do artigo a partir do banco manual.</p>
+<h2 id="a-triagem-prisma-foi-feita-manualmente">A triagem PRISMA foi
+feita manualmente</h2>
+<p>O corpus final do estudo (114 artigos, resultado das duas etapas de
+triagem do fluxograma PRISMA: identificação n=495 → elegibilidade
+analítica → nível de governo) <strong>já está pronto e codificado
+manualmente</strong> em
+<code>data/banco_final_114_burocracia_local.xlsx</code>. Não há etapa de
+triagem via LLM no pipeline; os scripts que a reconstruiriam foram
+removidos por não serem mais necessários.</p>
+<h2 id="estrutura">Estrutura</h2>
+<pre><code>projeto_R_burocracia_local/
+├── .Renviron.example                          # modelo p/ chave de API (copie para .Renviron)
+├── .gitignore                                  # ignora .Renviron e saidas geradas
+├── data/
+│   ├── raw_local_buro.csv                      # copia intacta do CSV original (495, com colunas tecnicas)
+│   ├── local_buro.csv                          # 495 registros de identificacao (referencia/contexto)
+│   ├── banco_final_114_burocracia_local.xlsx   # BANCO FINAL: 114 artigos, codificados manualmente
+│   └── banco_114_llm_x_humano.xlsx             # [gerado por 02] banco final + colunas LLM (sufixo &quot;_llm&quot;)
+├── scripts/
+│   ├── 00_setup_pacotes.R                      # instala/checa dependencias
+│   ├── 00b_crosswalk_categorias.R              # dicionario slug (acR) &lt;-&gt; rotulo humano
+│   ├── 01_construir_codebooks_conteudo.R       # define os 10 codebooks de conteudo
+│   ├── 02_classificacao_llm_conteudo.R         # classifica o banco final nas 10 variaveis via LLM
+│   ├── 03_validacao_humana.R                   # compara LLM x banco manual (IRR por variavel)
+│   └── 04_analise_descritiva.R                 # ANALISE FINAL -- le banco_final_114_burocracia_local.xlsx
+├── codebooks/
+│   ├── codebook_burocracia_local.docx          # codebook original (variaveis/categorias do artigo)
+│   └── *.yaml                                  # codebooks acR salvos (ac_qual_save_codebook)
+└── output/                                     # relatorio_metodo_*.html (gerados por 03), figuras/ (geradas por 04)</code></pre>
+<h2 id="banco-final-já-codificado">Banco final já codificado</h2>
+<p><code>data/banco_final_114_burocracia_local.xlsx</code> é o banco
+final do estudo: os 114 artigos do corpus final, <strong>codificados
+manualmente</strong> segundo o
+<code>codebooks/codebook_burocracia_local.docx</code>. É esse arquivo
+que <code>04_analise_descritiva.R</code> lê para produzir a análise
+final do artigo. A classificação LLM (scripts 01-03) serve apenas para
+<strong>validar</strong> essa codificação manual, não para
+substituí-la.</p>
+<p>Os nomes de coluna do banco final não são idênticos aos slugs usados
+pelos codebooks do <code>acR</code> (scripts 01/02), porque o banco
+final segue a nomenclatura do
+<code>codebook_burocracia_local.docx</code>. O
+<code>03_validacao_humana.R</code> faz essa “tradução” entre os dois
+vocabulários (crosswalk explícito em
+<code>00b_crosswalk_categorias.R</code>) para comparar a codificação
+automática com a manual, variável por variável.</p>
+<h2 id="configurar-a-chave-de-api-com-segurança">Configurar a chave de
+API com segurança</h2>
+<p>A chave nunca deve ser escrita em nenhum script. Ela mora no
+<code>.Renviron</code>, lido automaticamente pelo R na inicialização da
+sessão e <strong>fora do controle de versão</strong> (já listado no
+<code>.gitignore</code>).</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Copie o modelo</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">file.copy</span>(<span class="st">&quot;.Renviron.example&quot;</span>, <span class="st">&quot;.Renviron&quot;</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Abra para editar (mais seguro que abrir no editor comum)</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">edit_r_environ</span>(<span class="at">scope =</span> <span class="st">&quot;project&quot;</span>)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Cole: GEMINI_API_KEY=...   (sua chave real do Google AI Studio)</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Reinicie a sessão do R (Session &gt; Restart R no RStudio)</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. Confirme</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.getenv</span>(<span class="st">&quot;GEMINI_API_KEY&quot;</span>) <span class="sc">!=</span> <span class="st">&quot;&quot;</span></span></code></pre></div>
+<h2 id="ordem-de-execução">Ordem de execução</h2>
+<ol type="1">
+<li><p><strong><code>00_setup_pacotes.R</code></strong>: roda uma vez,
+instala <code>acR</code>, <code>ellmer</code> e demais pacotes (inclui
+<code>irr</code>, usado pelo cálculo de Alpha de Krippendorff em
+<code>03</code>).</p></li>
+<li><p><strong><code>01_construir_codebooks_conteudo.R</code></strong>:
+define os 10 codebooks das variáveis de conteúdo do
+<code>codebook_burocracia_local.docx</code>. Revise os
+<code>examples_pos</code>/<code>examples_neg</code> (ilustrativos) antes
+de rodar em escala.</p></li>
+<li><p><strong><code>02_classificacao_llm_conteudo.R</code></strong>:
+requer <code>GEMINI_API_KEY</code> (ou <code>GOOGLE_API_KEY</code>).
+Classifica o banco final (114 artigos, lido diretamente de
+<code>data/banco_final_114_burocracia_local.xlsx</code>) nas 10
+variáveis, com
+<code>chat_google_gemini(model = &quot;gemini-2.5-flash&quot;)</code> e
+<code>k_consistency = 3</code>, seguindo o padrão de uso da <a href="https://ahenriquecp.com/acR/articles/qualitativo-llm.html">vinheta
+oficial do <code>acR</code></a>. Roda primeiro em modo PILOTO (25
+artigos, <code>RODAR_PILOTO &lt;- TRUE</code>); confira a distribuição
+de categorias e o <code>confidence_score</code> antes de rodar tudo
+(<code>RODAR_PILOTO &lt;- FALSE</code>). Gera
+<code>data/banco_114_llm_x_humano.xlsx</code>, com as colunas humanas
+originais e as novas colunas LLM (sufixo <code>_llm</code>) lado a lado,
+na mesma linha.</p>
+<p><strong>Bugs conhecidos do <code>acR</code></strong> (não são deste
+script, mas afetam qualquer provedor, e já foram reportados ao autor do
+pacote para correção na origem): <code>live = &quot;terminal&quot;</code> quebra
+com “Cannot find progress bar” porque <code>.ac_live_start()</code> não
+fixa <code>.envir</code> em <code>cli::cli_progress_bar()</code>; o
+script já contorna isso automaticamente (função
+<code>classificar_variavel()</code>, com fallback para
+<code>live = &quot;off&quot;</code>). Além disso, o parâmetro
+<code>temperature</code> de <code>ac_qual_code()</code> é aceito mas
+nunca repassado ao modelo dentro de <code>.ac_classify_one()</code>,
+então as rodadas de self-consistency não variam a temperatura de fato.
+Ambos exigem correção no código-fonte do <code>acR</code> (ver
+comentários no topo do script).</p></li>
+<li><p><strong><code>03_validacao_humana.R</code></strong>: compara,
+variável por variável, a codificação LLM (<code>&lt;slug&gt;_llm</code>)
+com a manual (nome original do banco final), calcula IRR (percent
+agreement, Alpha de Krippendorff, AC1 de Gwet, F1 macro) e gera um
+relatório metodológico HTML por variável em <code>output/</code>.
+<code>dimensao_teorica</code> (multilabel, mais de uma categoria por
+artigo) é avaliada à parte, por sobreposição exata e índice de
+Jaccard.</p></li>
+<li><p><strong><code>04_analise_descritiva.R</code></strong>: script
+único de análise do banco final, lê diretamente
+<code>data/banco_final_114_burocracia_local.xlsx</code> (o banco já
+codificado manualmente) e produz frequências, completude, tendência
+temporal e perfil bibliométrico. Saída no console e gráficos em
+<code>output/figuras/</code>.</p></li>
+</ol>
+<h2 id="variáveis-do-codebook">Variáveis do codebook</h2>
+<p>A tabela abaixo mostra, para cada variável do artigo, o nome usado no
+<strong>banco final</strong> (o que importa para a análise em
+<code>04</code>) e o slug correspondente no <strong>codebook do
+<code>acR</code></strong> (o que importa para a classificação/validação
+automática em <code>01</code>-<code>03</code>, onde aparece com o sufixo
+<code>_llm</code>). Onde os nomes divergem, o crosswalk explícito em
+<code>00b_crosswalk_categorias.R</code> faz a tradução.</p>
+<table>
+<colgroup>
+<col style="width: 36%" />
+<col style="width: 39%" />
+<col style="width: 24%" />
+</colgroup>
+<thead>
+<tr>
+<th>Variável (banco final)</th>
+<th>Slug no codebook <code>acR</code> (01/02/03)</th>
+<th>Codificada via LLM?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>nivel_governo</code></td>
+<td>(não aplicável)</td>
+<td>não (definida na triagem manual)</td>
+</tr>
+<tr>
+<td><code>nivel_hierarquico_burocracia</code></td>
+<td>(não aplicável)</td>
+<td>não</td>
+</tr>
+<tr>
+<td><code>metodo</code></td>
+<td>(não aplicável)</td>
+<td>não</td>
+</tr>
+<tr>
+<td><code>papel_burocracia</code></td>
+<td>(não aplicável)</td>
+<td>não</td>
+</tr>
+<tr>
+<td><code>justificativa_codificacao</code></td>
+<td>(não aplicável)</td>
+<td>não</td>
+</tr>
+<tr>
+<td><code>setor_politica_publica</code></td>
+<td><code>setor_politica</code></td>
+<td>sim</td>
+</tr>
+<tr>
+<td><code>dimensao_teorica</code> (multilabel)</td>
+<td><code>dimensao_teorica</code></td>
+<td>sim</td>
+</tr>
+<tr>
+<td><code>relacao_politica_burocracia</code></td>
+<td><code>relacao_politica_burocracia</code></td>
+<td>sim</td>
+</tr>
+<tr>
+<td><code>explicacao_arranjo</code></td>
+<td><code>explicacao_arranjo</code></td>
+<td>sim</td>
+</tr>
+<tr>
+<td><code>tipo_efeito</code></td>
+<td><code>consequencia_arranjo</code></td>
+<td>sim</td>
+</tr>
+<tr>
+<td><code>valoracao</code></td>
+<td><code>valoracao_burocracia</code></td>
+<td>sim</td>
+</tr>
+<tr>
+<td><code>enquadramento_normativo</code></td>
+<td><code>enquadramento_normativo</code></td>
+<td>sim</td>
+</tr>
+<tr>
+<td><code>grau_agencia</code></td>
+<td><code>grau_agencia</code></td>
+<td>sim</td>
+</tr>
+<tr>
+<td><code>referencia_federal</code></td>
+<td><code>referencia_federal</code></td>
+<td>sim</td>
+</tr>
+<tr>
+<td><code>escopo_empirico</code></td>
+<td><code>escopo_empirico</code></td>
+<td>sim</td>
+</tr>
+<tr>
+<td><code>year</code></td>
+<td>(não aplicável)</td>
+<td>não (metadado bibliográfico)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Notas importantes sobre o crosswalk:</strong></p>
+<ul>
+<li><code>explicacao_arranjo</code> ganhou a categoria
+<code>nao_aplicavel</code> (ausente na versão anterior do codebook)
+porque ela responde por cerca de 32% dos casos no banco humano. Sem essa
+categoria, o LLM seria forçado a “chutar” uma causa onde o artigo não
+aponta nenhuma.</li>
+<li><code>dimensao_teorica</code> é <strong>multilabel</strong>: o banco
+humano registra combinações (ex.: <code>&quot;Técnica | Política&quot;</code>). O
+codebook em <code>01</code> foi ajustado para
+<code>multilabel = TRUE</code> e a validação em <code>03</code> usa
+sobreposição exata + Jaccard em vez de concordância categórica
+simples.</li>
+</ul>
+<p>As colunas técnicas de triagem automática (<code>bureau_match</code>,
+<code>level_match</code>, <code>federal_match</code>,
+<code>local_bureaucracy</code>, <code>title_norm</code>,
+<code>abstract_norm</code>, <code>corpus_text</code>,
+<code>has_abstract</code>, <code>has_doi</code>, <code>title_len</code>,
+<code>abstract_len</code>) foram removidas do banco de trabalho
+(<code>data/local_buro.csv</code>), mas seguem preservadas em
+<code>data/raw_local_buro.csv</code>.</p>
+<h2 id="custo-estimado">Custo estimado</h2>
+<p>Com <code>gemini-2.5-flash</code> (modelo rápido/econômico da família
+Gemini) e <code>k_consistency = 3</code>: o corpus final é pequeno (114
+artigos) e não há mais etapa de triagem sobre os 495 registros
+originais, então o custo total das 10 variáveis de conteúdo tende a
+ficar na faixa de poucos dólares. Confira o preço atual por token em <a href="https://ai.google.dev/pricing" class="uri">https://ai.google.dev/pricing</a> antes de rodar a base
+inteira (<code>RODAR_PILOTO &lt;- FALSE</code>), já que os preços por
+provedor mudam com frequência.</p>
+<h2 id="uso-de-inteligência-artificial">Uso de Inteligência
+Artificial</h2>
+<p>Os autores utilizaram o modelo de linguagem Claude (Sonnet 5 da
+Anthropic), operado por meio do ambiente Claude Code/Cowork, como
+ferramenta de apoio à depuração e à estruturação dos scripts em R do
+pipeline computacional do estudo, incluindo a identificação e correção
+de erros no pacote <code>acR</code> e a organização dos scripts de
+classificação, validação e análise descritiva. A ferramenta não foi
+utilizada para a codificação de conteúdo final do corpus, para a
+interpretação dos resultados ou para a redação analítica do capítulo.
+Todo o código gerado ou revisado com auxílio de IA foi verificado,
+testado e validado pelos autores, que assumem integral responsabilidade
+pela correção técnica e científica do material produzido.</p>
+</body>
+</html>
