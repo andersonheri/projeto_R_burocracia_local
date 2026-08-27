@@ -273,11 +273,14 @@ removidos por não serem mais necessários.</p>
 │   ├── 01_construir_codebooks_conteudo.R       # define os 10 codebooks de conteudo
 │   ├── 02_classificacao_llm_conteudo.R         # classifica o banco final nas 10 variaveis via LLM
 │   ├── 03_validacao_humana.R                   # compara LLM x banco manual (IRR por variavel)
-│   └── 04_analise_descritiva.R                 # ANALISE FINAL -- le banco_final_114_burocracia_local.xlsx
+│   ├── 04_analise_descritiva.R                 # ANALISE FINAL -- le banco_final_114_burocracia_local.xlsx
+│   └── 05_graficos_paper.R                     # graficos p/ o paper -- mesma leitura, sem os cruzamentos
 ├── codebooks/
 │   ├── codebook_burocracia_local.docx          # codebook original (variaveis/categorias do artigo)
 │   └── *.yaml                                  # codebooks acR salvos (ac_qual_save_codebook)
-└── output/                                     # relatorio_metodo_*.html (gerado por 03)</code></pre>
+└── output/
+    ├── relatorio_metodo_*.html                 # [gerado por 03]
+    └── figuras/                                # [geradas por 05]</code></pre>
 <h2 id="banco-final-já-codificado">Banco final já codificado</h2>
 <p><code>data/banco_final_114_burocracia_local.xlsx</code> é o banco
 final do estudo: os 114 artigos do corpus final, <strong>codificados
@@ -364,6 +367,13 @@ Jaccard.</p></li>
 codificado manualmente) e produz frequências, completude, tendência
 temporal, perfil bibliométrico e tabelas cruzadas descritivas. Saída
 apenas no console (não gera gráficos nem arquivos).</p></li>
+<li><p><strong><code>05_graficos_paper.R</code></strong>: le a mesma
+base do script <code>04</code> e gera os gráficos usados no artigo
+(perfil bibliométrico, frequências por variável e tendência temporal),
+um <code>.png</code> por tabela, salvos em <code>output/figuras/</code>.
+Não inclui os cruzamentos entre variáveis (seção 5 do <code>04</code>):
+são muitas combinações, e o mapa de calor por par não entra no
+artigo.</p></li>
 </ol>
 <h2 id="variáveis-do-codebook">Variáveis do codebook</h2>
 <p>A tabela abaixo mostra, para cada variável do artigo, o nome usado no

@@ -32,11 +32,14 @@ projeto_R_burocracia_local/
 │   ├── 01_construir_codebooks_conteudo.R       # define os 10 codebooks de conteudo
 │   ├── 02_classificacao_llm_conteudo.R         # classifica o banco final nas 10 variaveis via LLM
 │   ├── 03_validacao_humana.R                   # compara LLM x banco manual (IRR por variavel)
-│   └── 04_analise_descritiva.R                 # ANALISE FINAL -- le banco_final_114_burocracia_local.xlsx
+│   ├── 04_analise_descritiva.R                 # ANALISE FINAL -- le banco_final_114_burocracia_local.xlsx
+│   └── 05_graficos_paper.R                     # graficos p/ o paper -- mesma leitura, sem os cruzamentos
 ├── codebooks/
 │   ├── codebook_burocracia_local.docx          # codebook original (variaveis/categorias do artigo)
 │   └── *.yaml                                  # codebooks acR salvos (ac_qual_save_codebook)
-└── output/                                     # relatorio_metodo_*.html (gerado por 03)
+└── output/
+    ├── relatorio_metodo_*.html                 # [gerado por 03]
+    └── figuras/                                # [geradas por 05]
 ```
 
 ## Banco final já codificado
@@ -115,6 +118,12 @@ Sys.getenv("GEMINI_API_KEY") != ""
    codificado manualmente) e produz frequências, completude, tendência
    temporal, perfil bibliométrico e tabelas cruzadas descritivas. Saída
    apenas no console (não gera gráficos nem arquivos).
+6. **`05_graficos_paper.R`**: le a mesma base do script `04` e gera os
+   gráficos usados no artigo (perfil bibliométrico, frequências por
+   variável e tendência temporal), um `.png` por tabela, salvos em
+   `output/figuras/`. Não inclui os cruzamentos entre variáveis (seção 5
+   do `04`): são muitas combinações, e o mapa de calor por par não entra
+   no artigo.
 
 ## Variáveis do codebook
 
