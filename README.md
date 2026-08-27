@@ -2,6 +2,12 @@
 
 Autores: Mariana Batista (UFPE), Amanda Domingos (Universidade de Oxford) e Anderson Henrique (USP).
 
+A nota metodológica do capítulo, com o detalhamento dos dados e
+procedimentos da revisão sistemática (RSL) que este pipeline reproduz e o
+relatório de concordância LLM x codificação manual (gerado por
+`03_validacao_humana.R`), está em
+[`nota_metodologica.docx`](nota_metodologica.docx).
+
 Pipeline para (1) rodar uma classificação automática (LLM, via pacote `acR`)
 das 10 variáveis de conteúdo do `codebook_burocracia_local.docx` sobre o
 corpus final, (2) comparar essa classificação com a codificação manual já
@@ -47,6 +53,7 @@ com a raiz do projeto como working directory:
 
 ```
 projeto_R_burocracia_local/
+├── nota_metodologica.docx                      # nota metodologica do capitulo (dados, RSL, relatorio de concordancia)
 ├── .Renviron.example                          # modelo p/ chave de API (copie para .Renviron)
 ├── .gitignore                                  # ignora .Renviron e saidas geradas
 ├── data/

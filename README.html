@@ -247,6 +247,10 @@ analíticas, mapeamento e direções” (codificação e análise do banco
 final)</h1>
 <p>Autores: Mariana Batista (UFPE), Amanda Domingos (Universidade de
 Oxford) e Anderson Henrique (USP).</p>
+<p>A nota metodológica do capítulo, com o detalhamento dos dados e
+procedimentos da revisão sistemática (RSL) que este pipeline reproduz e
+o relatório de concordância LLM x codificação manual (gerado por
+<code>03_validacao_humana.R</code>), está em <a href="nota_metodologica.docx"><code>nota_metodologica.docx</code></a>.</p>
 <p>Pipeline para (1) rodar uma classificação automática (LLM, via pacote
 <code>acR</code>) das 10 variáveis de conteúdo do
 <code>codebook_burocracia_local.docx</code> sobre o corpus final, (2)
@@ -297,6 +301,7 @@ este script não reproduz.</li>
 </ul>
 <h2 id="estrutura">Estrutura</h2>
 <pre><code>projeto_R_burocracia_local/
+├── nota_metodologica.docx                      # nota metodologica do capitulo (dados, RSL, relatorio de concordancia)
 ├── .Renviron.example                          # modelo p/ chave de API (copie para .Renviron)
 ├── .gitignore                                  # ignora .Renviron e saidas geradas
 ├── data/
