@@ -265,12 +265,36 @@ triagem via LLM no pipeline abaixo (ver “Ordem de execução”).</p>
 (que geraram o n=495 inicial) estão em
 <code>scripts/00_triagem_inicial_rsl/</code>, mantidos como
 referência/reprodutibilidade da etapa de identificação. Eles não fazem
-parte da ordem de execução numerada abaixo: foram escritos num projeto
-anterior, com uma estrutura de pastas própria
-(<code>Data/rawData/</code>, <code>Data/AnalysisData/</code>, diferente
-do <code>data/</code> deste repositório), e o resultado deles já está
+parte da ordem de execução numerada abaixo: o resultado deles já está
 incorporado em <code>data/raw_local_buro.csv</code> /
-<code>data/local_buro.csv</code>.</p>
+<code>data/local_buro.csv</code>, então não é preciso rodá-los de novo
+para reproduzir a análise do artigo.</p>
+<p>Os caminhos de leitura/escrita já foram ajustados para a pasta
+<code>data/</code> deste repositório (o projeto original usava
+<code>Data/rawData/</code>/<code>Data/AnalysisData/</code>, com
+maiúscula). Se quiser rodá-los mesmo assim (ex.: para atualizar a busca
+com artigos mais recentes), rode na ordem <code>0_GettingData.R</code> →
+<code>1_CleaningData.R</code>, com a raiz do projeto como working
+directory:</p>
+<ul>
+<li><code>0_GettingData.R</code> busca, termo por termo, em 11
+periódicos indexados no SciELO (via
+<code>easyScieloPack::search_scielo()</code>) e salva o resultado bruto
+em <code>data/scielo_papers_raw.rds</code>/<code>.csv</code>.
+<strong>Atenção:</strong> são ~120 termos × 11 periódicos, então a busca
+faz mais de mil requisições ao SciELO e pode demorar bastante.</li>
+<li><code>1_CleaningData.R</code> lê esse resultado bruto, normaliza
+título/resumo, remove duplicatas e sinaliza (por regex) artigos sobre
+burocracia (<code>bureau_match</code>), nível local
+(<code>level_match</code>) e nível federal (<code>federal_match</code>),
+salvando em <code>data/scielo_papers_flagged.rds</code> (todos os
+artigos, com as flags) e <code>data/scielo_papers_bureaucracy.rds</code>
+(só os sinalizados como burocracia). Esses dois arquivos <strong>não
+sobrescrevem</strong>
+<code>data/raw_local_buro.csv</code>/<code>data/local_buro.csv</code>,
+que já têm, além dessas mesmas flags, colunas de codificação manual que
+este script não reproduz.</li>
+</ul>
 <h2 id="estrutura">Estrutura</h2>
 <pre><code>projeto_R_burocracia_local/
 ├── .Renviron.example                          # modelo p/ chave de API (copie para .Renviron)

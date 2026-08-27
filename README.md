@@ -19,10 +19,29 @@ LLM no pipeline abaixo (ver "Ordem de execução").
 Os dois scripts que fizeram a busca e a primeira triagem por termos (que
 geraram o n=495 inicial) estão em `scripts/00_triagem_inicial_rsl/`, mantidos
 como referência/reprodutibilidade da etapa de identificação. Eles não fazem
-parte da ordem de execução numerada abaixo: foram escritos num projeto
-anterior, com uma estrutura de pastas própria (`Data/rawData/`,
-`Data/AnalysisData/`, diferente do `data/` deste repositório), e o resultado
-deles já está incorporado em `data/raw_local_buro.csv` / `data/local_buro.csv`.
+parte da ordem de execução numerada abaixo: o resultado deles já está
+incorporado em `data/raw_local_buro.csv` / `data/local_buro.csv`, então não é
+preciso rodá-los de novo para reproduzir a análise do artigo.
+
+Os caminhos de leitura/escrita já foram ajustados para a pasta `data/` deste
+repositório (o projeto original usava `Data/rawData/`/`Data/AnalysisData/`,
+com maiúscula). Se quiser rodá-los mesmo assim (ex.: para atualizar a busca
+com artigos mais recentes), rode na ordem `0_GettingData.R` → `1_CleaningData.R`,
+com a raiz do projeto como working directory:
+
+- `0_GettingData.R` busca, termo por termo, em 11 periódicos indexados no
+  SciELO (via `easyScieloPack::search_scielo()`) e salva o resultado bruto em
+  `data/scielo_papers_raw.rds`/`.csv`. **Atenção:** são ~120 termos × 11
+  periódicos, então a busca faz mais de mil requisições ao SciELO e pode
+  demorar bastante.
+- `1_CleaningData.R` lê esse resultado bruto, normaliza título/resumo,
+  remove duplicatas e sinaliza (por regex) artigos sobre burocracia
+  (`bureau_match`), nível local (`level_match`) e nível federal
+  (`federal_match`), salvando em `data/scielo_papers_flagged.rds` (todos os
+  artigos, com as flags) e `data/scielo_papers_bureaucracy.rds` (só os
+  sinalizados como burocracia). Esses dois arquivos **não sobrescrevem**
+  `data/raw_local_buro.csv`/`data/local_buro.csv`, que já têm, além dessas
+  mesmas flags, colunas de codificação manual que este script não reproduz.
 
 ## Estrutura
 

@@ -174,8 +174,12 @@ all_papers <- bind_rows(RAP,RBCP,RBCS, OP, BPSR, LN, CRH, CEBAPE, CGPC,
 
 
 # Saving daset -----
-write_rds(all_papers, "Data/rawData/scielo_papers.RDS")
-write.csv(all_papers, "Data/rawData/scielo_papers.csv")
+# Caminhos ajustados para a estrutura deste repositorio (pasta "data/" na
+# raiz do projeto, sem as subpastas "rawData"/"AnalysisData" do projeto
+# original). Rode este script com a raiz do projeto como working directory
+# (abrindo o .Rproj, ou Rscript a partir da raiz).
+write_rds(all_papers, "data/scielo_papers_raw.rds")
+write.csv(all_papers, "data/scielo_papers_raw.csv", row.names = FALSE)
 
 ####### end of script ######
 

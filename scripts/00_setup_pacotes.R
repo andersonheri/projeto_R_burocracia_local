@@ -5,19 +5,25 @@
 # =============================================================================
 
 pacotes_cran <- c(
-  "remotes",     # instalar pacotes do GitHub (acR)
-  "ellmer",      # interface unificada com LLMs (Google Gemini, usado no projeto; tambem suporta Groq, OpenAI, Anthropic, etc.)
-  "dplyr",       # manipulação de dados
-  "readr",       # leitura de CSV
-  "tidyr",       # pivot/organização de tabelas
-  "stringr",     # manipulação de texto
-  "janitor",     # tabelas de frequência (tabyl)
-  "openxlsx",    # leitura/escrita de .xlsx
-  "scales",      # formatação de eixos/percentuais em gráficos e tabelas
-  "purrr",       # iteração funcional (map sobre os 10 codebooks)
-  "rlang",       # tidy eval (!!, :=, .data[[...]])
-  "usethis",     # usethis::edit_r_environ() para editar o .Renviron com seguranca
-  "irr"          # Alpha de Krippendorff, usado por acR::ac_qual_reliability()
+  "remotes",         # instalar pacotes do GitHub (acR)
+  "ellmer",          # interface unificada com LLMs (Google Gemini, usado no projeto; tambem suporta Groq, OpenAI, Anthropic, etc.)
+  "dplyr",           # manipulação de dados
+  "readr",           # leitura de CSV
+  "tidyr",           # pivot/organização de tabelas
+  "stringr",         # manipulação de texto
+  "stringi",         # normalização de acentos/caixa (usado na triagem inicial, 00_triagem_inicial_rsl)
+  "janitor",         # tabelas de frequência (tabyl)
+  "openxlsx",        # leitura/escrita de .xlsx
+  "scales",          # formatação de eixos/percentuais em gráficos e tabelas
+  "purrr",           # iteração funcional (map sobre os 10 codebooks e sobre os periodicos na triagem inicial)
+  "rlang",           # tidy eval (!!, :=, .data[[...]])
+  "usethis",         # usethis::edit_r_environ() para editar o .Renviron com seguranca
+  "irr",             # Alpha de Krippendorff, usado por acR::ac_qual_reliability()
+  "cli",             # barra de progresso da rotina propria em 02 (mesmo padrao do acR)
+  "jsonlite",        # le o JSON de resposta do LLM em 02 (dimensao_teorica)
+  "tibble",          # tibble() -- usado em 02/03/04
+  "ggplot2",         # graficos de 05_graficos_paper.R
+  "easyScieloPack"   # busca no Scielo, usado em 00_triagem_inicial_rsl/0_GettingData.R
 )
 
 instalar_se_faltar <- function(pkg) {

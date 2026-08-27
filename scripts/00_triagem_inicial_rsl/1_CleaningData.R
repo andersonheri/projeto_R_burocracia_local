@@ -12,7 +12,9 @@ library(ggplot2)
 library(purrr)
 
 ##### Loading dataset #####
-all_papers <- readRDS("Data/rawData/scielo_papers.RDS")
+# Caminho ajustado para a estrutura deste repositorio (pasta "data/" na
+# raiz do projeto) -- ver 0_GettingData.R.
+all_papers <- readRDS("data/scielo_papers_raw.rds")
 
 
 
@@ -126,8 +128,15 @@ all_papers <- readRDS("Data/rawData/scielo_papers.RDS")
   all_buro <- all_papers %>% filter(bureau_match == "TRUE")
 
 ## Save dataset for analysis -----
-  write_rds(all_papers, "Data/AnalysisData/all_papers_category.RDS")
-  write_rds(all_buro, "Data/AnalysisData/all_papers_bureaucracy.RDS")
-  
+  # NOTA: estes dois arquivos sao intermediarios da triagem por termos (a
+  # primeira etapa do fluxograma PRISMA, identificacao). NAO sobrescrevem
+  # data/raw_local_buro.csv nem data/local_buro.csv -- esses dois ja
+  # contêm, alem destas mesmas colunas de flag, colunas de codificacao
+  # manual (nivel_burocracia, papel_burocracia, resultado, mensuracao,
+  # metodo) que este script nao reproduz. Ver README (secao "A triagem
+  # PRISMA foi feita manualmente") para o histórico completo dessa base.
+  write_rds(all_papers, "data/scielo_papers_flagged.rds")
+  write_rds(all_buro, "data/scielo_papers_bureaucracy.rds")
+
   ###### END OF SCRIPT #######
   
