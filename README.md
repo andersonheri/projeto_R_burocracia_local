@@ -14,8 +14,15 @@ O corpus final do estudo (114 artigos, resultado das duas etapas de triagem
 do fluxograma PRISMA: identificação n=495 → elegibilidade analítica → nível
 de governo) **já está pronto e codificado manualmente** em
 `data/banco_final_114_burocracia_local.xlsx`. Não há etapa de triagem via
-LLM no pipeline; os scripts que a reconstruiriam foram removidos por não
-serem mais necessários.
+LLM no pipeline abaixo (ver "Ordem de execução").
+
+Os dois scripts que fizeram a busca e a primeira triagem por termos (que
+geraram o n=495 inicial) estão em `scripts/00_triagem_inicial_rsl/`, mantidos
+como referência/reprodutibilidade da etapa de identificação. Eles não fazem
+parte da ordem de execução numerada abaixo: foram escritos num projeto
+anterior, com uma estrutura de pastas própria (`Data/rawData/`,
+`Data/AnalysisData/`, diferente do `data/` deste repositório), e o resultado
+deles já está incorporado em `data/raw_local_buro.csv` / `data/local_buro.csv`.
 
 ## Estrutura
 
@@ -29,6 +36,9 @@ projeto_R_burocracia_local/
 │   ├── banco_final_114_burocracia_local.xlsx   # BANCO FINAL: 114 artigos, codificados manualmente
 │   └── banco_114_llm_x_humano.xlsx             # [gerado por 02] banco final + colunas LLM (sufixo "_llm")
 ├── scripts/
+│   ├── 00_triagem_inicial_rsl/                 # referencia: busca e 1a triagem por termos (n=495 inicial)
+│   │   ├── 0_GettingData.R                     # busca no Scielo (easyScieloPack), por periodico/termo
+│   │   └── 1_CleaningData.R                    # limpeza, deduplicacao e flag bureau/local/federal por regex
 │   ├── 00_setup_pacotes.R                      # instala/checa dependencias
 │   ├── 00b_crosswalk_categorias.R              # dicionario slug (acR) <-> rotulo humano
 │   ├── 01_construir_codebooks_conteudo.R       # define os 10 codebooks de conteudo

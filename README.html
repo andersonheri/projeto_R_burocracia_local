@@ -241,8 +241,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; }
 <header id="title-block-header">
 <h1 class="title">README</h1>
 </header>
-<h1 id="projeto-burocracia-local-codificação-e-análise-do-banco-final">Projeto:
-Burocracia Local (codificação e análise do banco final)</h1>
+<h1 id="informações-metodológicas-do-capítulo-a-política-da-burocracia-local-dimensões-analíticas-mapeamento-e-direções-codificação-e-análise-do-banco-final">Informações
+metodológicas do capítulo: “A política da burocracia local: dimensões
+analíticas, mapeamento e direções” (codificação e análise do banco
+final)</h1>
+<p>Autores: Mariana Batista (UFPE), Amanda Domingos (Universidade de
+Oxford) e Anderson Henrique (USP).</p>
 <p>Pipeline para (1) rodar uma classificação automática (LLM, via pacote
 <code>acR</code>) das 10 variáveis de conteúdo do
 <code>codebook_burocracia_local.docx</code> sobre o corpus final, (2)
@@ -256,8 +260,17 @@ triagem do fluxograma PRISMA: identificação n=495 → elegibilidade
 analítica → nível de governo) <strong>já está pronto e codificado
 manualmente</strong> em
 <code>data/banco_final_114_burocracia_local.xlsx</code>. Não há etapa de
-triagem via LLM no pipeline; os scripts que a reconstruiriam foram
-removidos por não serem mais necessários.</p>
+triagem via LLM no pipeline abaixo (ver “Ordem de execução”).</p>
+<p>Os dois scripts que fizeram a busca e a primeira triagem por termos
+(que geraram o n=495 inicial) estão em
+<code>scripts/00_triagem_inicial_rsl/</code>, mantidos como
+referência/reprodutibilidade da etapa de identificação. Eles não fazem
+parte da ordem de execução numerada abaixo: foram escritos num projeto
+anterior, com uma estrutura de pastas própria
+(<code>Data/rawData/</code>, <code>Data/AnalysisData/</code>, diferente
+do <code>data/</code> deste repositório), e o resultado deles já está
+incorporado em <code>data/raw_local_buro.csv</code> /
+<code>data/local_buro.csv</code>.</p>
 <h2 id="estrutura">Estrutura</h2>
 <pre><code>projeto_R_burocracia_local/
 ├── .Renviron.example                          # modelo p/ chave de API (copie para .Renviron)
@@ -268,6 +281,9 @@ removidos por não serem mais necessários.</p>
 │   ├── banco_final_114_burocracia_local.xlsx   # BANCO FINAL: 114 artigos, codificados manualmente
 │   └── banco_114_llm_x_humano.xlsx             # [gerado por 02] banco final + colunas LLM (sufixo &quot;_llm&quot;)
 ├── scripts/
+│   ├── 00_triagem_inicial_rsl/                 # referencia: busca e 1a triagem por termos (n=495 inicial)
+│   │   ├── 0_GettingData.R                     # busca no Scielo (easyScieloPack), por periodico/termo
+│   │   └── 1_CleaningData.R                    # limpeza, deduplicacao e flag bureau/local/federal por regex
 │   ├── 00_setup_pacotes.R                      # instala/checa dependencias
 │   ├── 00b_crosswalk_categorias.R              # dicionario slug (acR) &lt;-&gt; rotulo humano
 │   ├── 01_construir_codebooks_conteudo.R       # define os 10 codebooks de conteudo
