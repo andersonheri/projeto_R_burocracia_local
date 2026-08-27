@@ -1,4 +1,6 @@
-# Projeto: Burocracia Local (codificação e análise do banco final)
+# Informações metodológicas do capítulo: "A política da burocracia local: dimensões analíticas, mapeamento e direções" (codificação e análise do banco final)
+
+Autores: Mariana Batista (UFPE), Amanda Domingos (Universidade de Oxford) e Anderson Henrique (USP).
 
 Pipeline para (1) rodar uma classificação automática (LLM, via pacote `acR`)
 das 10 variáveis de conteúdo do `codebook_burocracia_local.docx` sobre o
